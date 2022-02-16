@@ -43,7 +43,13 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
     }
     ```
 
+# Class Components
+
+- aren't really state of the art anymore, as *Function Components* got a lot more powerful with the most recent versions of React, but may be used in a lot of legacy code
+- it's also much easier
+
 # Other Learnings
 
 - semantic ui is a nice css library to quickly style components without heavy customization in the first place (https://semantic-ui.com/ and https://cdnjs.com/libraries/semantic-ui)
 - faker is a great library for creating example data for prototyping and testing (https://fakerjs.dev/guide/)
+- the chrome developer console's "Sensors" tab provides a way to override sensor data for testing and mocking purposes
