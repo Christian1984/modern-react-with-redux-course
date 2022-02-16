@@ -1,21 +1,17 @@
 import React from "react";
-import { faker } from "@faker-js/faker";
 
 const CommentDetails = (props) => {
-    const imgUrl = faker.image.avatar();
-    const name = faker.name.findName();
-    const time = faker.date.past().toLocaleString();
-    const text = faker.random.words(Math.floor(Math.random() * 30) + 10);
+    console.log(props);
 
     return (
         <div className="comment">
-            <a href="/" className="avatar"><img alt="avatar" src={ imgUrl } /></a>
+            <a href="/" className="avatar"><img alt="avatar" src={ props.avatarUrl } /></a>
             <div className="content">
-                <a href="/" className="author">{ name }</a>
+                <a href="/" className="author">{ props.author }</a>
                 <div className="metadata">
-                    <span className="date">{ time }</span>
+                    <span className="date">{ props.time }</span>
                 </div>
-                <div className="text">{ text }</div>
+                <div className="text">{ props.text }</div>
             </div>
         </div>
     );
