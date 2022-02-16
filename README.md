@@ -15,3 +15,8 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 ## Component Reusability
 
 ## Component Configuration
+
+# Other Learnings
+
+- semantic ui is a nice css library to quickly style components without heavy customization in the first place (https://semantic-ui.com/ and https://cdnjs.com/libraries/semantic-ui)
+- faker is a great library for creating example data for prototyping and testing (https://fakerjs.dev/guide/)
