@@ -1,5 +1,11 @@
 This repo is a code-along for https://www.udemy.com/course/react-redux/
 
+# Initializing And Launching a React App
+
+- install node
+- use `npx create-react-app [appname]` to initialize a new react app
+- start the app with `npm start` 
+
 # JSX Basics
 
 - babel is used to "translate" JSX so it can be interpreted by basically any web browser. babel provides a nice tool to check on the fly how a given JSX is translated at https://babeljs.io/repl
@@ -47,6 +53,19 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 
 - aren't really state of the art anymore, as *Function Components* got a lot more powerful with the most recent versions of React, but may be used in a lot of legacy code
 - it's also much easier
+- must extend `React.Component`
+- must implement a `render()` method that returns the actual JSX
+
+## The React State System
+
+- `state` must not be confused with `props`
+- only works with Class Components (though Function Components offer a similar system through hooks)
+- `state` is a JavaScript object that contains data relevant to the component
+- updating `state` causes the component to re-render
+- `state` must be updated by using the `setState()` method
+- `state` must be initialized when the component is created, e.g. in the `constructor` method
+- the initialization of `this.state` in the `constructor` is THE ONLY TIME where it is directly assigned without using `setState()`!!!
+- the `render()` method should never contain any "business logic" that does any kind of heavy lifting or, even worse, updates the components `state`. that will ultimately lead to constant re-rendering.
 
 # Other Learnings
 
