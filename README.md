@@ -12,9 +12,23 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 
 ## Component Nesting
 
+- components can be nested inside each other just like standard html elements can
+
 ## Component Reusability
 
+- child components can and should "live" in their own .js files and then be exported and improted by the parent component
+
 ## Component Configuration
+
+- data can be passed grom a parent to a child component using props (e.g. with `<Comment author="Tom" />`)...
+- ... and then be processed by the child consuming the `props` parameter that is always passed as the first parameter, e.g.
+    ```
+    const Comment = props => {
+        return (
+            <span>{props.author}</span>
+        );
+    }
+    ```
 
 # Other Learnings
 
