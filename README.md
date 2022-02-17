@@ -75,6 +75,8 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
     }
     ```
 - querying data should, by convention, be triggered inside `componentDidMount`
+- `state` and `props` can easily be confused: 
+    - a `state` can be used an passed down to a child component as a `prop`
 
 # Other Learnings
 

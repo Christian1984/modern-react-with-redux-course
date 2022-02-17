@@ -7,10 +7,7 @@ class App extends React.Component {
     state = { lat: null, errorMessage: "" };
 
     componentDidMount() {
-        console.log("componentDidMount...");
-
-        const month = new Date().getMonth();
-        console.log("Month:", month);
+        //console.log("componentDidMount...");
     
         //getGeolocation()
         mockGeolocation()
@@ -29,7 +26,7 @@ class App extends React.Component {
             return <div>Error: { this.state.errorMessage }</div>
         }
         else if (this.state.lat) {
-            return <div>Latitude: { this.state.lat }</div>;
+            return <SeasonDisplay lat={ this.state.lat } month={ new Date().getMonth() } />;
         }
         else if (!this.state.lat && !this.state.err) {
             return <div>Loading...</div>
