@@ -55,6 +55,7 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - it's also much easier
 - must extend `React.Component`
 - must implement a `render()` method that returns the actual JSX
+- rendering a component and returning different JSX based on state is called *conditional redenring*
 
 ## The React State System
 
@@ -65,7 +66,15 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - `state` must be updated by using the `setState()` method
 - `state` must be initialized when the component is created, e.g. in the `constructor` method
 - the initialization of `this.state` in the `constructor` is THE ONLY TIME where it is directly assigned without using `setState()`!!!
-- the `render()` method should never contain any "business logic" that does any kind of heavy lifting or, even worse, updates the components `state`. that will ultimately lead to constant re-rendering.
+- the `render()` method should never contain any "business logic" that does any kind of heavy lifting or, even worse, updates the components `state`. that will ultimately lead to constant re-rendering
+- as an alternative method to initialize state in the `constructor` method, it can also be initialized as a class property right away, e.g.
+    ```
+    class MyComponent extends React.Component {
+        state = { lat: null, err: "" };
+        //...
+    }
+    ```
+- querying data should, by convention, be triggered inside `componentDidMount`
 
 # Other Learnings
 
