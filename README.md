@@ -75,8 +75,13 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
     }
     ```
 - querying data should, by convention, be triggered inside `componentDidMount`
-- `state` and `props` can easily be confused: 
-    - a `state` can be used an passed down to a child component as a `prop`
+- `state` and `props` can easily be confused: a `state` can be used an passed down to a child component as a `prop`
+- CSS classes that describe a child and are derived from it's state or props can easily be written with *template string*, e.g. ``<i className= { `${iconName} icon massive icon-left` } ></i>``
+
+## Styling
+
+- CSS files should not be added to the HTML directly, but rather be imported on a per component level with an `import` statement, e.g. `import "./SeasonDisplay.css";`. this instructs the bundler to inject/wire the CSS accordingly
+- SASS/SCSS can also be used by adding the dependencies with `npm install node-sass` and then rename the CSS to SCSS and import it as described above
 
 # Other Learnings
 

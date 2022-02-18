@@ -1,0 +1,23 @@
+i {
+    position: absolute;
+}
+
+.icon-left {
+    left: 0;
+    top: 0;
+}
+
+.icon-right {
+    right: 0;
+    bottom: 0;
+}
+
+h1 {
+    position: absolute;
+    /*width: 100%;*/
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 50%;
+    margin: 0;
+}
