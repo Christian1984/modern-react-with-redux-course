@@ -30,18 +30,15 @@ class App extends React.Component {
             return <SeasonDisplay lat={ this.state.lat } month={ month } />;
         }
         else if (!this.state.lat && !this.state.err) {
-            return <div>Loading...</div>
+            return (
+                <div class="ui segment" style={{height: "100vh"}}>
+                    <div class="ui active dimmer">
+                        <div class="ui text loader">Loading</div>
+                    </div>
+                    <p></p>
+                </div>
+            );
         }
-    
-        /*return (
-            <div className="ui container">
-                <h2>Your Location:</h2>
-                <div>Latitude: { this.state.lat }</div>
-                <div>Error: { this.state.errorMessage }</div>
-                <h2>Current Season:</h2>
-                <SeasonDisplay />
-            </div>
-        );*/
     }
 }
 
