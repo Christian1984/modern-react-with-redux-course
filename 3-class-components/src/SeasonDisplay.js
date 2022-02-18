@@ -26,6 +26,6 @@ const SeasonDisplay = props => {
             <i className= { `${iconName} icon massive icon-right` } ></i>
         </div>
     );
-}
+};
 
 export default SeasonDisplay;

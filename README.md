@@ -13,6 +13,17 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - `class` vs `className`: an html `class` property should be converted to `className` when converted to JSX. this is simply to avoid collisions between the JavaScript `class` keyword and the property inside JSX.
 - `for` vs `htmlFor`: for the same reason, the `for` attribute (of labels) is replaced with `htmlFor` to prevent collisions
 - js variables or methods can be reference from JSX with curly braces, e.g. `<button>{ getMyVar() }</button>` would show a button with the text returned by `getMyVar()`.
+- Default props can be specified by configuring
+    ```
+    const Component = props => {
+        //...
+    };
+
+    Component.defaultProps = {
+        test: "Hello World!"
+    };
+    ```
+    This is a better approach than doing something like `<div>{ props.test || "Hello World!" }</div>`
 
 # Three Tenets of Components
 
