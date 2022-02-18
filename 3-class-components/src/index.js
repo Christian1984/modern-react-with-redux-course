@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Spinner from "./Spinner";
 import { mockGeolocation, getGeolocation } from "./Utils"
 
 class App extends React.Component {
@@ -30,14 +31,7 @@ class App extends React.Component {
             return <SeasonDisplay lat={ this.state.lat } month={ month } />;
         }
         else if (!this.state.lat && !this.state.err) {
-            return (
-                <div class="ui segment" style={{height: "100vh"}}>
-                    <div class="ui active dimmer">
-                        <div class="ui text loader">Loading</div>
-                    </div>
-                    <p></p>
-                </div>
-            );
+            return <Spinner text="Retrieving Current Position..." />;
         }
     }
 }
