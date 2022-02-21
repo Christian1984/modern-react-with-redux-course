@@ -16,13 +16,8 @@ class App extends React.Component {
             .catch(err => this.setState({ errorMessage: err.message }));
     }
 
-    /*componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("componentDidUpdate:", prevProps, prevState, snapshot)
-    }*/
-
-    render() {
-        console.log("render at " + new Date());
-        const month = 6;//new Date().getMonth()
+    renderContent() {
+        const month = new Date().getMonth()
 
         if (this.state.errorMessage && !this.state.lat) {
             return <div>Error: { this.state.errorMessage }</div>
@@ -33,6 +28,12 @@ class App extends React.Component {
         else if (!this.state.lat && !this.state.err) {
             return <Spinner text="Retrieving Current Position..." />;
         }
+
+    }
+
+    render() {
+        console.log("render at " + new Date());
+        return<div>{ this.renderContent() }</div>;
     }
 }
 

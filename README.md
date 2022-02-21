@@ -13,7 +13,7 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - `class` vs `className`: an html `class` property should be converted to `className` when converted to JSX. this is simply to avoid collisions between the JavaScript `class` keyword and the property inside JSX.
 - `for` vs `htmlFor`: for the same reason, the `for` attribute (of labels) is replaced with `htmlFor` to prevent collisions
 - js variables or methods can be reference from JSX with curly braces, e.g. `<button>{ getMyVar() }</button>` would show a button with the text returned by `getMyVar()`.
-- Default props can be specified by configuring
+- default props can be specified by configuring
     ```
     const Component = props => {
         //...
@@ -67,6 +67,25 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - must extend `React.Component`
 - must implement a `render()` method that returns the actual JSX
 - rendering a component and returning different JSX based on state is called *conditional redenring*
+- it is good practice to avoid conditional rendering inside the `render()` function, but rather extract it in a seperate function and return one common parent element from render, which then calls that other function inside, e.g.
+    ```
+    renderContent() {
+        if (this.state.errorMessage) {
+            return <div>Error: { this.state.errorMessage }</div>
+        }
+        else if (this.state.lat) {
+            return <div>Your latitude is { this.state.lat }</div>;
+        }
+        else if (!this.state.lat && !this.state.err) {
+            return <div>Loading data...</div>;
+        }
+
+    }
+
+    render() {
+        return <div class="parent-class">{ this.renderContent() }</div>;
+    }
+    ```
 
 ## The React State System
 
