@@ -1,5 +1,12 @@
 This repo is a code-along for https://www.udemy.com/course/react-redux/
 
+# Project Overview
+
+- Project 1 covers sections (1) and (2)
+- Project 2 covers section (3)
+- Project 3 covers sections (4) - (6)
+- Project 4 covers sections (7) - (...)
+
 # Initializing And Launching a React App
 
 - install node
