@@ -2,10 +2,22 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 
 # Project Overview
 
-- Project 1 covers sections (1) and (2)
-- Project 2 covers section (3)
-- Project 3 covers sections (4) - (6)
-- Project 4 covers sections (7) - (...)
+- Project 1 Covers Sections (1) and (2)
+    - Basic JSX
+
+- Project 2 Covers Section (3)
+    - Props
+
+- Project 3 Covers Sections (4) - (6)
+    - Class Based Components
+    - State
+    - Lifecycle Methods
+
+- Project 4 Covers Sections (7) - (10)
+    - Handling User Events/Input
+    - API Requests
+    - Building Lists of Records
+    - Using Refs for DOM access
 
 # Initializing And Launching a React App
 
