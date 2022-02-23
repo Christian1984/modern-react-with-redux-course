@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-
-const App = () => {
-    return (
-        <div>Hello Project 4</div>
-    );
-};
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
