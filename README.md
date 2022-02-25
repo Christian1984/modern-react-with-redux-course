@@ -140,6 +140,43 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
     />
     ```
 - an input element that has a value that refers to the components state is called a "controlled element"
+- "wrong" bindings of `this` in handlers can be solved by one of 3 methods:
+    1. "re-binding" `this` in the `constructor()` method
+    2. defining the `onEventHandler` method using an arrow function, e.g.
+        ```
+        class Component extends React.Component {
+            onSubmitHandler = e => {
+                e.preventDefault();
+                console.log(this.state); // will properly log state to console
+            }
+
+            render() {
+                return (
+                    <form onSubmit={ onSubmitHandler }>
+                        <!-- form content -->
+                    </form>
+                );
+            }
+        }
+        ```
+    3. calling the `onEventHandler` in the `onEvent` prop using an arrow function, e.g.
+        ```
+        class Component extends React.Component {
+            onSubmitHandler(e) {
+                e.preventDefault();
+                console.log(this.state); // will properly log state to console
+            }
+
+            render() {
+                return (
+                    <form onSubmit={ e => onSubmitHandler(e) }>
+                        <!-- form content -->
+                    </form>
+                );
+            }
+        }
+        ```
+    - data can be communicated from a child component to a parent component by passing a callback method from the parent to the child, which then calls that specific callback method when due.
 
 # Styling
 
