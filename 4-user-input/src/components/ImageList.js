@@ -1,18 +1,14 @@
 import React from "react";
 
-class ImageList extends React.Component {
-    imageList() {
-        return this.props.imageUrls.map(e => <li><img src={ e } /></li>);
-    }
-
-    render() {
-        return (
-            <div className="ui segment">
-                <div>Found {this.props.imageUrls.length} images</div>
-                <ul>{ this.imageList() }</ul>
-            </div>
-        );
-    }
+const ImageList = props => {
+    const imageList = props.imageList.map(image => <li key={ image.id }><img src={ image.url } alt={ image.alt } /></li>);
+    console.log(props.imageList);
+    return (
+        <div className="ui segment">
+            <div>Found {props.imageList.length} images</div>
+            <ul>{ imageList }</ul>
+        </div>
+    );
 }
 
 export default ImageList

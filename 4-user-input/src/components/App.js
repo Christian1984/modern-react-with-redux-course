@@ -1,27 +1,25 @@
 import React from "react";
-import axios from "axios";
+import unsplash from "../api/unsplash";
 import ImageList from "./ImageList";
 import SearchBar from "./SearchBar";
-import ApiKeys from "../nodist/ApiKeys";
 
 class App extends React.Component {
-    state = { imageUrls: [] }
+    state = { imageList: [] }
 
     onSearchHandler = async searchTerm => {
-        console.log("Searching images for: ", searchTerm);
-
         try {
-            const res = await axios.get("https://api.unsplash.com/search/photos/", {
-                headers: {
-                    Authorization: "Client-ID " + ApiKeys.UNSPLASH_API_KEY
-                },
+            const res = await unsplash.get("/search/photos", {
                 params: {
                     query: searchTerm
                 }
             });
 
-            const urls = res.data.results.map(e => e.urls.small);
-            this.setState({ imageUrls: urls });
+            const imageList = res.data.results.map(e => ({
+                url: e.urls.small,
+                id: e.id,
+                alt: e.description
+            }));
+            this.setState({ imageList: imageList });
         }
         catch (err) {
             console.error(err);
@@ -35,7 +33,7 @@ class App extends React.Component {
                     <SearchBar searchHandler={ this.onSearchHandler } />
                 </div>
                 <div className="ui container" style={ {marginTop: "10px"} }>
-                    <ImageList imageUrls={ this.state.imageUrls } />
+                    <ImageList imageList={ this.state.imageList } />
                 </div>
             </div>
         );
