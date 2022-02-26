@@ -2,7 +2,7 @@ import React from "react";
 
 class ImageList extends React.Component {
     imageList() {
-        return this.props.imageUrls.map(e => <li><img src={ url } /></li>);
+        return this.props.imageUrls.map(e => <li><img src={ e } /></li>);
     }
 
     render() {
