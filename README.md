@@ -197,6 +197,7 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
         }
     }
     ```
+- every element of a list needs to have a unique key property. in most cases an element's id is used for that purpose
 
 # Styling
 
