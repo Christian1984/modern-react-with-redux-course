@@ -178,6 +178,26 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
         ```
     - data can be communicated from a child component to a parent component by passing a callback method from the parent to the child, which then calls that specific callback method when due.
 
+# Rendering Lists
+
+- a list can be rendered by simply returning an array of JSX objects from a method like so:
+    ```
+    class ImageList extends React.Component {
+        imageList() {
+            return this.props.imageUrls.map(e => <li><img src={ url } /></li>);
+        }
+
+        render() {
+            return (
+                <div className="ui segment">
+                    <div>Found {this.props.imageUrls.length} images</div>
+                    <ul>{ this.imageList() }</ul>
+                </div>
+            );
+        }
+    }
+    ```
+
 # Styling
 
 - CSS files should not be added to the HTML directly, but rather be imported on a per component level with an `import` statement, e.g. `import "./SeasonDisplay.css";`. this instructs the bundler to inject/wire the CSS accordingly

@@ -5,20 +5,27 @@ import SearchBar from "./SearchBar";
 import ApiKeys from "../nodist/ApiKeys";
 
 class App extends React.Component {
-    onSearchHandler = searchTerm => {
+    state = { imageUrls: [] }
+
+    onSearchHandler = async searchTerm => {
         console.log("Searching images for: ", searchTerm);
 
-        //axios.get("https://api.unsplash.com/search/photos/?query=" + searchTerm + "&client_id=" + ApiKeys.UNSPLASH_API_KEY)
-        axios.get("https://api.unsplash.com/search/photos/", {
-            headers: {
-                Authorization: "Client-ID " + ApiKeys.UNSPLASH_API_KEY
-            },
-            params: {
-                query: searchTerm
-            }
-        })
-            .then(res => console.log(res))
-            .catch(err => console.error(err));
+        try {
+            const res = await axios.get("https://api.unsplash.com/search/photos/", {
+                headers: {
+                    Authorization: "Client-ID " + ApiKeys.UNSPLASH_API_KEY
+                },
+                params: {
+                    query: searchTerm
+                }
+            });
+
+            const urls = res.data.results.map(e => e.urls.small);
+            this.setState({ imageUrls: urls });
+        }
+        catch (err) {
+            console.error(err);
+        }
     }
 
     render() {
@@ -28,7 +35,7 @@ class App extends React.Component {
                     <SearchBar searchHandler={ this.onSearchHandler } />
                 </div>
                 <div className="ui container" style={ {marginTop: "10px"} }>
-                    <ImageList />
+                    <ImageList imageUrls={ this.state.imageUrls } />
                 </div>
             </div>
         );
