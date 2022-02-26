@@ -1,0 +1,6 @@
+class ApiKeys {
+    static UNSPLASH_API_KEY = "";
+    static UNSPLASH_API_SECRET = "";
+}
+
+export default ApiKeys;
