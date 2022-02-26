@@ -8,7 +8,15 @@ class App extends React.Component {
     onSearchHandler = searchTerm => {
         console.log("Searching images for: ", searchTerm);
 
-        axios.get("https://api.unsplash.com/search/photos/?query=" + searchTerm + "&client_id=" + ApiKeys.UNSPLASH_API_KEY)
+        //axios.get("https://api.unsplash.com/search/photos/?query=" + searchTerm + "&client_id=" + ApiKeys.UNSPLASH_API_KEY)
+        axios.get("https://api.unsplash.com/search/photos/", {
+            headers: {
+                Authorization: "Client-ID " + ApiKeys.UNSPLASH_API_KEY
+            },
+            params: {
+                query: searchTerm
+            }
+        })
             .then(res => console.log(res))
             .catch(err => console.error(err));
     }
