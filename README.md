@@ -19,6 +19,9 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
     - Building Lists of Records
     - Using Refs for DOM access
 
+- Project 5 Covers Section (11)
+    - Challenge
+
 # Initializing And Launching a React App
 
 - install node
