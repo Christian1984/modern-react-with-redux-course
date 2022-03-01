@@ -9,9 +9,16 @@ ul {
 
     li {
         /*display: inline;*/
+        overflow: hidden;
 
-        img {
-            max-width: 250px;
+        span {
+            display: block;
+            overflow: hidden;
+
+            img {
+                max-width: 250px;
+            }
         }
+
     }
 }
