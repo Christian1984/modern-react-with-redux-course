@@ -198,6 +198,33 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
     }
     ```
 - every element of a list needs to have a unique key property. in most cases an element's id is used for that purpose
+- the DOM can be accessed by using `refs`
+    - in the constructor, create a property on the state object and initialize it with `React.createRef()`
+    - in the render method, hook it up to a JSX element by setting it as the `ref`-property
+    ```
+    class ImageCard extends React.Component {
+        constructor() {
+            super();
+            this.state = { 
+                imgRef: React.createRef(), 
+                liRef: React.createRef() 
+            };
+        }
+
+        componentDidMount() {
+            console.log(this.state.liRef);
+            console.log(this.state.imgRef);
+        }
+
+        render() {
+            return (
+                <li ref={ this.state.liRef }>
+                    <img ref={ this.state.imgRef } src={ this.props.url } alt={ this.props.alt } />
+                </li>
+            );
+        }
+    }
+    ```
 
 # Styling
 
