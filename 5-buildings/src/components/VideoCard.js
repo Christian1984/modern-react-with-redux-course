@@ -5,7 +5,7 @@ const VideoCard = (props) => {
     const channelLink = `https://youtube.com/channel/${props.video.channelId}`;
 
     return (
-        <div className="item">
+        <div className="item" onClick={ () => props.onVideoSelect(props.video) } style={{ cursor: "pointer" }}>
             <a className="ui small image" href={ videoLink } target="_blank">
                 <img src={ props.video.thumbnail } />
             </a>

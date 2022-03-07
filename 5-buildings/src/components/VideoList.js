@@ -4,7 +4,11 @@ import VideoCard from "./VideoCard";
 const VideoList = (props) => {
     const renderListItems = () => {
         return props.videos.map(el => (
-            <VideoCard video={ el } key={ el.id } />
+            <VideoCard 
+                video={ el } 
+                key={ el.id } 
+                onVideoSelect={ props.onVideoSelect }
+            />
         ));
     };
 
@@ -17,7 +21,7 @@ const VideoList = (props) => {
     };
 
     return(
-        <div className="ui segment">
+        <div>
             { renderList() }
         </div>
     );

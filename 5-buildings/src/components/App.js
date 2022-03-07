@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import VideoList from "./VideoList";
+import VideoSection from "./VideoSection";
 import youtube from "../api/youtube";
 import "./App.scss";
 
@@ -43,7 +43,7 @@ class App extends React.Component {
                     <SearchBar submitHandler={ this.searchHandler } />
                 </div>
                 <div className="ui container">
-                    <VideoList videos={ this.state.videos } />
+                    <VideoSection videos={ this.state.videos } />
                 </div>
             </div>
 
