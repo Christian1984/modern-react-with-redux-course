@@ -10,8 +10,6 @@ class App extends React.Component {
     }
 
     searchHandler = async searchTerm => {
-        console.log("searchHandler => " + searchTerm);
-        
         try {
             const res = await youtube.get("/search", {
                 params: {
@@ -20,9 +18,14 @@ class App extends React.Component {
             });
 
             const items = res.data.items.map(el => {
+                console.log(el);
                 return {
                     id: el.id.videoId,
-                    title: el.snippet.title
+                    title: el.snippet.title,
+                    description: el.snippet.description,
+                    thumbnail: el.snippet.thumbnails.high.url,
+                    channelTitle: el.snippet.channelTitle,
+                    channelId: el.snippet.channelId
                 }
             });
 
