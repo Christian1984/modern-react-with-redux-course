@@ -2,6 +2,7 @@
 
 # secrets
 /**/src/nodist/*.js
+/**/src/api/nodist/*.js
 
 # dependencies
 /**/node_modules

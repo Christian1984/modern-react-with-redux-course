@@ -1,8 +1,50 @@
 import React from "react";
+import SearchBar from "./SearchBar";
+import VideoList from "./VideoList";
+import youtube from "../api/youtube";
+import "./App.scss";
 
 class App extends React.Component {
+    state = {
+        videos: []
+    }
+
+    searchHandler = async searchTerm => {
+        console.log("searchHandler => " + searchTerm);
+        
+        try {
+            const res = await youtube.get("/search", {
+                params: {
+                    q: searchTerm
+                }
+            });
+
+            const items = res.data.items.map(el => {
+                return {
+                    id: el.id.videoId,
+                    title: el.snippet.title
+                }
+            });
+
+            this.setState({ videos: items });
+        }
+        catch(e) {
+            console.error(e);
+        }
+    }
+
     render() {
-        return <div>Hello Buildings</div>;
+        return (
+            <div>
+                <div className="ui container">
+                    <SearchBar submitHandler={ this.searchHandler } />
+                </div>
+                <div className="ui container">
+                    <VideoList videos={ this.state.videos } />
+                </div>
+            </div>
+
+        );
     }
 }
 
