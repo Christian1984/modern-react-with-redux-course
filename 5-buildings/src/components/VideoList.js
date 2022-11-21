@@ -16,7 +16,7 @@ const VideoList = (props) => {
         if (!props.videos || props.videos.length === 0) return <div>- empty -</div>;
 
         return (
-            <div className="ui divided items">{ renderListItems() }</div>
+            <div className="ui relaxed divided list">{ renderListItems() }</div>
         );
     };
 

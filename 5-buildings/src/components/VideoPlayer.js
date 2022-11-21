@@ -1,9 +1,21 @@
 import React from "react";
 
-class VideoPlayer extends React.Component {
-    render() {
-        return <div>Video: { this.props.video ? this.props.video.id : "none" }</div>
+const VideoPlayer = props => {
+    if (!props.video) {
+        return <div>Loading...</div>
     }
+
+    return (
+        <div>
+            <div className="ui embed">
+                <iframe title="Video Player" src={`https://youtube.com/embed/${props.video.id}`}></iframe>
+            </div>
+            <div className="ui segment">
+                <h4 className="ui header">{ props.video.title }</h4>
+                <p>{ props.video.description }</p>
+            </div>
+        </div>
+    );
 }
 
 export default VideoPlayer;

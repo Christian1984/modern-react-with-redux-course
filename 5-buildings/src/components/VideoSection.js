@@ -2,21 +2,21 @@ import React from "react";
 import VideoPlayer from "./VideoPlayer";
 import VideoList from "./VideoList";
 
-class VideoSection extends React.Component {
-    state = { selectedVideo: null }
-
-    onVideoSelect = video => {
-        this.setState({ selectedVideo: video });
-    }
-
-    render() {
-        return (
-            <div className="ui segment">
-                <VideoPlayer video={ this.state.selectedVideo } />
-                <VideoList videos={ this.props.videos } onVideoSelect={ this.onVideoSelect } />
+const VideoSection = props => {
+    return (
+        <div className="ui segment">
+            <div className="ui grid">
+                <div className="ui row">
+                    <div className="ten wide column">
+                        <VideoPlayer video={ props.selectedVideo } />
+                    </div>
+                    <div className="six wide column">
+                        <VideoList videos={ props.videos } onVideoSelect={ props.onVideoSelect } />
+                    </div>
+                </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default VideoSection;

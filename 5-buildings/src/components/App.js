@@ -1,4 +1,5 @@
 import React from "react";
+import he from "he";
 import SearchBar from "./SearchBar";
 import VideoSection from "./VideoSection";
 import youtube from "../api/youtube";
@@ -6,7 +7,16 @@ import "./App.scss";
 
 class App extends React.Component {
     state = {
-        videos: []
+        videos: [],
+        selectedVideo: null
+    }
+
+    onVideoSelect = video => {
+        this.setState({ selectedVideo: video });
+    }
+
+    componentDidMount = () => {
+        this.searchHandler("cats");
     }
 
     searchHandler = async searchTerm => {
@@ -18,18 +28,21 @@ class App extends React.Component {
             });
 
             const items = res.data.items.map(el => {
-                console.log(el);
                 return {
                     id: el.id.videoId,
-                    title: el.snippet.title,
-                    description: el.snippet.description,
+                    title: he.decode(el.snippet.title),
+                    description: he.decode(el.snippet.description),
                     thumbnail: el.snippet.thumbnails.high.url,
-                    channelTitle: el.snippet.channelTitle,
+                    channelTitle: he.decode(el.snippet.channelTitle),
                     channelId: el.snippet.channelId
                 }
             });
 
-            this.setState({ videos: items });
+            const selectedVideo = items && items[0] ? items[0] : null;
+            this.setState({ 
+                videos: items,
+                selectedVideo: selectedVideo
+            });
         }
         catch(e) {
             console.error(e);
@@ -43,7 +56,7 @@ class App extends React.Component {
                     <SearchBar submitHandler={ this.searchHandler } />
                 </div>
                 <div className="ui container">
-                    <VideoSection videos={ this.state.videos } />
+                    <VideoSection videos={ this.state.videos } selectedVideo={ this.state.selectedVideo } onVideoSelect={ this.onVideoSelect } />
                 </div>
             </div>
 

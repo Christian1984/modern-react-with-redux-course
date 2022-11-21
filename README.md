@@ -239,3 +239,4 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - semantic ui is a nice css library to quickly style components without heavy customization in the first place (https://semantic-ui.com/ and https://cdnjs.com/libraries/semantic-ui)
 - faker is a great library for creating example data for prototyping and testing (https://fakerjs.dev/guide/)
 - the chrome developer console's "Sensors" tab provides a way to override sensor data for testing and mocking purposes
+- HTML entities (like `&quot;` etc.) will not be decoded by JSX per se. Using `` is an option, but not good practice, as it makes an App XSS vulnerable. A better option would be to run those strings to an HTML entity encoder like [he](https://github.com/mathiasbynens/he), for example.
