@@ -22,6 +22,9 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - Project 5 Covers Section (11)
     - Challenge
 
+- Project 6 Covers Section (12)
+    - React Hooks
+
 # Initializing And Launching a React App
 
 - install node
@@ -228,6 +231,93 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
         }
     }
     ```
+- react does not allow to return "unwrapped" multiple html elements (e.g. `return <h1>H1</h1><p>content</p>`) is not valid JSX. to achieve this result without wrapping the content into a separate html element alltogether, a `React.Fragment` can be used (e.g. `return <React.Fragment><h1>H1</h1><p>content</p></React.Fragment>`)
+
+# React Hooks
+
+- hooks can be used with functional components
+
+## `useState`
+
+- the `useState` hook can be used to add the concept of state known from class based components to functional components as well
+- state with `useState` can be implemented like so:
+    ```
+    import React, { useState } from "react";
+
+    const Light = () => {
+        const [light, setLight] = useState(false);
+
+        return (
+            <div>
+                <h1>Light is on: {light}</h1>
+                <p onClick={() => setLight(true)}>On</p>
+                <p onClick={() => setLight(false)}>Off</p>
+            </div>
+        );
+    };
+    ```
+
+## `useEffect`
+
+- `useEffect`: enables lifecycle methods in functional components
+- `useEffect` is used like so:
+    ```
+    import React, { useState, useEffect } from "react";
+
+    const Counter = () => {
+        const [counter, setCounter] = useState(false);
+
+        useEffect(() => {
+            console.log("counter has changed!");
+        }, [counter]);
+
+        return (
+            <div>
+                <h1>Counter: {counter}</h1>
+                <p onClick={() => setCounter(counter + 1)}>+1</p>
+            </div>
+        );
+    };
+    ```
+- the second parameter can have one of three values:
+    - `[]`: run callback at initial render only
+    - `undefined`: run callback at initial render and after every rerender
+    - `[someValue]`: run callback at initial render and after every rerender if `someValue` has changed
+- the callback function in useEffect itself should not be async. best practice is to define an async function inside the callback itself and then call it right away:
+    ```
+    useEffect(() => {
+        const fetchData = async () => {
+            // fetch data
+        };
+
+        fetchData();
+    }, [term]);
+    ```
+- `useEffect` can return a cleanup function, that will get executed the next time BEFORE `useEffect` runs!
+    ```
+    let i = 0;
+    const MyComponent = () => {
+        const [term, setTerm] = useState("");
+
+        useEffect(() => {
+            const fetchData = async () => {
+                // fetch data
+            };
+
+            fetchData();
+
+            i++;
+            console.log(i); // 0, 1, 2, ...
+            return () => console.log("CLEANUP: " + 1); // 1, 2, 3, ...
+        }, [term]);
+    //...
+    }
+    ```
+- the cleanup function is a great place to clear a timout function invoked in the previous `useEffect` call...
+
+## `useRef`
+
+- `useRef`: create a `ref` in a functional component
 
 # Styling
 
@@ -239,4 +329,4 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - semantic ui is a nice css library to quickly style components without heavy customization in the first place (https://semantic-ui.com/ and https://cdnjs.com/libraries/semantic-ui)
 - faker is a great library for creating example data for prototyping and testing (https://fakerjs.dev/guide/)
 - the chrome developer console's "Sensors" tab provides a way to override sensor data for testing and mocking purposes
-- HTML entities (like `&quot;` etc.) will not be decoded by JSX per se. Using `` is an option, but not good practice, as it makes an App XSS vulnerable. A better option would be to run those strings to an HTML entity encoder like [he](https://github.com/mathiasbynens/he), for example.
+- HTML entities (like `&quot;` etc.) will not be decoded by JSX per se. Using `dangerouslyInsertHTML` is an option, but not good practice, as it makes an App XSS vulnerable. A better option would be to run those strings to an HTML entity encoder like [he](https://github.com/mathiasbynens/he), for example.
