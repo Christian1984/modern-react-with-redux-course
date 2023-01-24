@@ -1,63 +1,54 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
     const [expanded, setExpanded] = useState(false);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        document.body.addEventListener(
+            "click",
+            (e) => {
+                //console.log("body ->", e.target);
+                if (!dropdownRef.current.contains(e.target)) {
+                    setExpanded(false);
+                }
+            },
+            { capture: true }
+        );
+    }, []);
 
     return (
-        <>
-            {expanded && (
+        <div className="ui form hidden" ref={dropdownRef}>
+            <div className="field">
+                <label className="label">Select a color</label>
                 <div
-                    style={{
-                        position: "fixed",
-                        left: 0,
-                        top: 0,
-                        right: 0,
-                        bottom: 0,
-                        // backgroundColor: "black",
-                        // opacity: 0.5,
+                    onClick={(e) => {
+                        //console.log("label -> ", e.target);
+                        setExpanded((old) => !old);
                     }}
-                    onClick={() => {
-                        setExpanded(false);
-                    }}
-                ></div>
-            )}
-            <div className="ui form hidden">
-                <div className="field">
-                    <label className="label">Select a color</label>
-                    <div
-                        onClick={() => setExpanded((old) => !old)}
-                        className={"ui selection dropdown" + (expanded ? " visible active" : "")}
-                    >
-                        <i className="dropdown icon"></i>
-                        <div className="text">{selected.label}</div>
-                        <div className={"menu" + (expanded ? " visible transition" : "")}>
-                            {options
-                                //.filter((option) => option !== selected)
-                                .map((option) => (
-                                    <div
-                                        key={option.value}
-                                        className="item"
-                                        onClick={() => {
-                                            onSelectedChange(option);
-                                        }}
-                                    >
-                                        {option.label}
-                                    </div>
-                                ))}
-                        </div>
+                    className={"ui selection dropdown" + (expanded ? " visible active" : "")}
+                >
+                    <i className="dropdown icon"></i>
+                    <div className="text">{selected.label}</div>
+                    <div className={"menu" + (expanded ? " visible transition" : "")}>
+                        {options
+                            //.filter((option) => option !== selected)
+                            .map((option) => (
+                                <div
+                                    key={option.value}
+                                    className="item"
+                                    onClick={(e) => {
+                                        //console.log("option -> ", e.target);
+                                        onSelectedChange(option);
+                                    }}
+                                >
+                                    {option.label}
+                                </div>
+                            ))}
                     </div>
                 </div>
             </div>
-            {/*
-            <select className="ui dropdown">
-                {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
-            </select>
-             */}
-        </>
+        </div>
     );
 };
 
