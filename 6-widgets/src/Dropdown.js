@@ -4,17 +4,16 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
     const [expanded, setExpanded] = useState(false);
     const dropdownRef = useRef(null);
 
+    const onBodyClick = (e) => {
+        //console.log("body ->", e.target);
+        if (!dropdownRef.current.contains(e.target)) {
+            setExpanded(false);
+        }
+    };
+
     useEffect(() => {
-        document.body.addEventListener(
-            "click",
-            (e) => {
-                //console.log("body ->", e.target);
-                if (!dropdownRef.current.contains(e.target)) {
-                    setExpanded(false);
-                }
-            },
-            { capture: true }
-        );
+        document.body.addEventListener("click", onBodyClick, { capture: true });
+        return () => document.body.removeEventListener("click", onBodyClick);
     }, []);
 
     return (
