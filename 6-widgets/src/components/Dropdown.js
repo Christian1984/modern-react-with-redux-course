@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, selected, onSelectedChanged }) => {
     const [expanded, setExpanded] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -13,13 +13,13 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 
     useEffect(() => {
         document.body.addEventListener("click", onBodyClick, { capture: true });
-        return () => document.body.removeEventListener("click", onBodyClick);
+        return () => document.body.removeEventListener("click", onBodyClick, { capture: true });
     }, []);
 
     return (
-        <div className="ui form hidden" ref={dropdownRef}>
+        <div className="ui form" ref={dropdownRef}>
             <div className="field">
-                <label className="label">Select a color</label>
+                <label className="label">{label}</label>
                 <div
                     onClick={(e) => {
                         //console.log("label -> ", e.target);
@@ -38,7 +38,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
                                     className="item"
                                     onClick={(e) => {
                                         //console.log("option -> ", e.target);
-                                        onSelectedChange(option);
+                                        onSelectedChanged(option);
                                     }}
                                 >
                                     {option.label}
