@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Convert } from "./Convert";
 import Dropdown from "./Dropdown";
 
 const options = [
@@ -10,11 +11,6 @@ const options = [
 export const Translate = () => {
     const [language, setLanguage] = useState(options[0]);
     const [text, setText] = useState("");
-    const [translation, setTranslation] = useState("translation");
-
-    useEffect(() => {
-        setTranslation(text);
-    }, [text]);
 
     return (
         <div>
@@ -30,7 +26,7 @@ export const Translate = () => {
             <div className="ui form">
                 <div className="field">
                     <label>Output</label>
-                    <input value={translation} readOnly />
+                    <Convert text={text} language={language.value} />
                 </div>
             </div>
         </div>
