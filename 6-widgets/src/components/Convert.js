@@ -4,11 +4,10 @@ const apiKey = "AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM";
 
 export const Convert = ({ text, language }) => {
     const [converted, setConverted] = useState("");
-    let timeout = 0;
 
     useEffect(() => {
         setConverted("");
-        timeout = setTimeout(() => {
+        const timeout = setTimeout(() => {
             const url = new URL("https://translation.googleapis.com/language/translate/v2");
             url.searchParams.append("q", text);
             url.searchParams.append("target", language);
