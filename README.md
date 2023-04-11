@@ -350,6 +350,12 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 
 # Context
 
+- with context, data can be shared across the entire app.
+- steps:
+  1. create a context with `const MyContext = createContext()`
+  2. wrap the entire app inside a Context-Provider with `<MyContext.Provider><App /></MyContext.Provider>`
+  3. consume context inside components with `const data = useContext(MyContext)`
+
 # Other Learnings
 
 - semantic ui is a nice css library to quickly style components without heavy customization in the first place (https://semantic-ui.com/ and https://cdnjs.com/libraries/semantic-ui)
