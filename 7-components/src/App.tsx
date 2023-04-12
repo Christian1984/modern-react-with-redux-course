@@ -3,7 +3,6 @@ import { Button, ButtonPurpose } from "./components/Button";
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
       <div>
         <Button purpose={ButtonPurpose.primary}>Hello World</Button>
         <Button purpose={ButtonPurpose.primary} rounded>
