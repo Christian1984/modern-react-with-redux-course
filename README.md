@@ -27,8 +27,18 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 
   - Challenge
 
-- Project 6 Covers Section (12)
+/\ /\ /\ legacy course
+= = = = = = = = = = = =
+\/ \/ \/ new course
+
+- Project 6 Covers Section (6) - (9)
+
+  - Handling Forms
+  - APIs
+  - Context System
   - React Hooks
+
+- Project 7 Covers Sections (10) - ...
 
 # Initializing And Launching a React App
 
