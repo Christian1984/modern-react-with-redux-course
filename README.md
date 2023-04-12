@@ -316,6 +316,22 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
   }, [term]);
   ```
 
+- if the callback function refers to a variable that is not in the list of dependencies, a "stale variable reference" may occur. This means that the callback function in useEffect references a variable at a location in memory that is no longer being referenced by the component itself, as a complete new "set" of variables is created upon every rerender, e.g.:
+
+  ```
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => console.log(counter), 500);
+  }, []);
+
+  return <button onClick={() => setCounter(prev => prev + 1)}>+</button>;
+  ```
+
+  In this example, counter will always log 0, as the callback function will always reference the counter created upon the initial render, not the memory location that holds the actual counter value (see Video #144 for further details).
+
+  The same happens when a function is passed to useEffect. `useCallback` can be used to mitigate this behaviour.
+
 - `useEffect` can return a cleanup function, that will get executed the next time BEFORE `useEffect` runs!
 
   ```
