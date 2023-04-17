@@ -1,10 +1,11 @@
 import { Button, ButtonPurpose } from "./components/Button";
+import { GoBell } from "react-icons/go";
 
 function App() {
   return (
     <>
       <div>
-        <Button>default</Button>
+        <Button onClick={(e) => console.log(e)}>default</Button>
         <Button rounded>default</Button>
         <Button outlined>default</Button>
         <Button rounded outlined>
@@ -13,14 +14,20 @@ function App() {
       </div>
 
       <div>
-        <Button purpose={ButtonPurpose.primary}>primary</Button>
+        <Button purpose={ButtonPurpose.primary}>
+          <GoBell />
+          primary
+        </Button>
         <Button purpose={ButtonPurpose.primary} rounded>
+          <GoBell />
           primary
         </Button>
         <Button purpose={ButtonPurpose.primary} outlined>
+          <GoBell />
           primary
         </Button>
         <Button purpose={ButtonPurpose.primary} rounded outlined>
+          <GoBell />
           primary
         </Button>
       </div>
