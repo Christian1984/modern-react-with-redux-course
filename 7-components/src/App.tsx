@@ -1,11 +1,11 @@
-import { Button, ButtonPurpose } from "./components/Button";
-import { GoBell } from "react-icons/go";
-import { AccordionPage } from "./pages/AccordionPage";
 // import { ButtonPage } from "./pages/ButtonPage";
+// import { AccordionPage } from "./pages/AccordionPage";
+import { DropdownPage } from "./pages/DropdownPage";
 
 function App() {
   // return <ButtonPage />;
-  return <AccordionPage />;
+  // return <AccordionPage />;
+  return <DropdownPage />;
 }
 
 export default App;
