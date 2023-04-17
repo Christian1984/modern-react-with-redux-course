@@ -391,3 +391,4 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - json-server is a great package to quickly spin up a development rest server that uses a simple json-file as its "database".
 - use concurrently to spin up frontend and backend with one command
 - the vscode extension REST client can consume http-files and send requests directly from here.
+- the `classnames` npm library allows for conditionally joining classnames. nice!
