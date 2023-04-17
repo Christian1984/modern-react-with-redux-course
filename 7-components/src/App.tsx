@@ -5,7 +5,9 @@ function App() {
   return (
     <>
       <div>
-        <Button onClick={(e) => console.log(e)}>default</Button>
+        <Button onClick={(e) => console.log(e)} className="mb-5">
+          default
+        </Button>
         <Button rounded>default</Button>
         <Button outlined>default</Button>
         <Button rounded outlined>

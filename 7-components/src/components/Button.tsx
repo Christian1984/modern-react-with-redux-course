@@ -18,6 +18,7 @@ type ButtonProps = {
 
 const Button = ({ rounded, outlined, purpose, children, ...rest }: ButtonProps) => {
   const className = classnames(
+    rest.className,
     "font-bold",
     "py-1.5",
     "px-3",
