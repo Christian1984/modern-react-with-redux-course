@@ -11,13 +11,12 @@ enum ButtonPurpose {
 
 type ButtonProps = {
   children?: React.ReactNode;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   rounded?: boolean;
   outlined?: boolean;
   purpose?: ButtonPurpose;
-};
+} & React.ComponentPropsWithoutRef<"button">;
 
-const Button = ({ rounded, outlined, purpose, onClick, children }: ButtonProps) => {
+const Button = ({ rounded, outlined, purpose, children, ...rest }: ButtonProps) => {
   const className = classnames(
     "font-bold",
     "py-1.5",
@@ -47,7 +46,7 @@ const Button = ({ rounded, outlined, purpose, onClick, children }: ButtonProps) 
   );
 
   return (
-    <button onClick={onClick} className={className}>
+    <button {...rest} className={className}>
       {children}
     </button>
   );
