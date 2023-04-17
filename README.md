@@ -286,6 +286,8 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
   };
   ```
 
+- use the functional version of state updates whenever a new state depends on the old state!
+
 ## `useEffect`
 
 - `useEffect`: enables lifecycle methods in functional components
@@ -393,3 +395,8 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 - the vscode extension REST client can consume http-files and send requests directly from here.
 - the `classnames` npm library allows for conditionally joining classnames. nice!
 - use `React.ComponentPropsWithoutRef<"button">` (for example) to inherit the properties of a native component (see project 7, Button.tsx for an example); alternatively `React.ButtonHTMLAttributes<HTMLButtonElement>` could be used.
+
+# Helpful Libraries
+
+- classnames
+- react-icons

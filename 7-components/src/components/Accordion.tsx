@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { GoChevronLeft, GoChevronDown } from "react-icons/go";
 
 type AccordionItemProps = {
   id: string;
@@ -11,16 +12,27 @@ type AccordionProps = {
 };
 
 const Accordion = ({ items }: AccordionProps) => {
-  const [expandedIndex, setExpandedIndex] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState(-1);
 
   return (
     <div>
       {items.map(({ id, label, content }, index) => (
-        <div className="mb-5" key={id}>
-          <div className="cursor-pointer" onClick={() => setExpandedIndex(index)}>
+        <div className="border-x border-t" key={id}>
+          <div
+            className="p-3 bg-gray-50 border-b flex items-center justify-between cursor-pointer"
+            onClick={() => {
+              if (expandedIndex === index) {
+                setExpandedIndex(-1);
+                return;
+              }
+
+              setExpandedIndex(index);
+            }}
+          >
             {label}
+            <span className="text-xl">{expandedIndex === index ? <GoChevronDown /> : <GoChevronLeft />}</span>
           </div>
-          {expandedIndex === index && <div>{content}</div>}
+          {expandedIndex === index && <div className="p-3 border-b">{content}</div>}
         </div>
       ))}
     </div>
