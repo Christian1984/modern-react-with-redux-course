@@ -8,17 +8,19 @@ function App() {
   // return <ButtonPage />;
   // return <AccordionPage />;
   return (
-    <div className="flex">
+    <div className="container mx-auto flex">
       <MainNavigation />
-      <Route route="/">
-        <ButtonPage />
-      </Route>
-      <Route route="/accordion">
-        <AccordionPage />
-      </Route>
-      <Route route="/dropdown">
-        <DropdownPage />
-      </Route>
+      <div className="grow">
+        <Route route="/">
+          <ButtonPage />
+        </Route>
+        <Route route="/accordion">
+          <AccordionPage />
+        </Route>
+        <Route route="/dropdown">
+          <DropdownPage />
+        </Route>
+      </div>
     </div>
   );
 }

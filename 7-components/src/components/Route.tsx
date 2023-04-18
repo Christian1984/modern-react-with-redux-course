@@ -1,5 +1,5 @@
-import { ReactNode, useContext } from "react";
-import { NavigationContext, NavigationContextType } from "../context/Navigation";
+import { ReactNode } from "react";
+import { useNavigation } from "../hooks/useNavigation";
 
 type RouteProps = {
   route: string;
@@ -7,10 +7,10 @@ type RouteProps = {
 };
 
 const Route = ({ route, children }: RouteProps) => {
-  const { path } = useContext(NavigationContext) as NavigationContextType;
+  const { path } = useNavigation();
 
   if (path === route) {
-    return <div className="grow">{children}</div>;
+    return <>{children}</>;
   }
 
   return null;

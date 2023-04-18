@@ -25,6 +25,7 @@ const Button = ({ rounded, outlined, purpose, children, ...rest }: ButtonProps) 
     "m-2",
     "inline-flex",
     "items-center",
+    "hover:scale-110",
     {
       "rounded-full": rounded,
     },
@@ -37,7 +38,7 @@ const Button = ({ rounded, outlined, purpose, children, ...rest }: ButtonProps) 
       "bg-red-500 hover:bg-red-700 text-white": !outlined && purpose === ButtonPurpose.danger,
     },
     {
-      "border bg-white hover:text-white": outlined,
+      "border bg-white hover:bg-gray-100": outlined,
       "border border-blue-500 text-blue-500": outlined && purpose === ButtonPurpose.primary,
       "border border-gray-900 text-gray-900": outlined && purpose === ButtonPurpose.secondary,
       "border border-green-500 text-green-500": outlined && purpose === ButtonPurpose.success,
