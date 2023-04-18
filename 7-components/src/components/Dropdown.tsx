@@ -20,14 +20,17 @@ const Dropdown = ({ label, items, value, handleSelect, className, ...rest }: Dro
 
   const hide = (e: MouseEvent) => {
     if (dropdownRef.current?.contains(e.target as Node)) {
-      console.log("inside");
+      console.log("inside", performance.now());
     } else {
-      console.log("ouside");
+      console.log("ouside", performance.now());
       setIsExpanded(false);
     }
   };
 
   useEffect(() => {
+    // document.addEventListener("click", hide, true);
+    // return () => document.removeEventListener("click", hide, true);
+
     document.addEventListener("click", hide);
     return () => document.removeEventListener("click", hide);
   }, []);
