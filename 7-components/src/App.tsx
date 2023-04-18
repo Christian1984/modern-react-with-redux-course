@@ -1,6 +1,7 @@
-// import { ButtonPage } from "./pages/ButtonPage";
-// import { AccordionPage } from "./pages/AccordionPage";
 import { MainNavigation } from "./components/MainNavigation";
+import { Route } from "./components/Route";
+import { AccordionPage } from "./pages/AccordionPage";
+import { ButtonPage } from "./pages/ButtonPage";
 import { DropdownPage } from "./pages/DropdownPage";
 
 function App() {
@@ -9,7 +10,15 @@ function App() {
   return (
     <div className="flex">
       <MainNavigation />
-      <DropdownPage />
+      <Route route="/">
+        <ButtonPage />
+      </Route>
+      <Route route="/accordion">
+        <AccordionPage />
+      </Route>
+      <Route route="/dropdown">
+        <DropdownPage />
+      </Route>
     </div>
   );
 }
