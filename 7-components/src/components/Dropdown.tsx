@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
+import { Panel } from "./Panel";
 
 type DropdownItemProps = {
   label: string;
@@ -15,8 +16,16 @@ type DropdownProps = {
 
 const Dropdown = ({ label, items, value, handleSelect, className, ...rest }: DropdownProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const hide = () => setIsExpanded(false);
+  const hide = (e: MouseEvent) => {
+    if (dropdownRef.current?.contains(e.target as Node)) {
+      console.log("inside");
+    } else {
+      console.log("ouside");
+      setIsExpanded(false);
+    }
+  };
 
   useEffect(() => {
     document.addEventListener("click", hide);
@@ -24,12 +33,11 @@ const Dropdown = ({ label, items, value, handleSelect, className, ...rest }: Dro
   }, []);
 
   return (
-    <div className={className + " relative"} {...rest}>
+    <div {...rest} className={className + " relative"} ref={dropdownRef}>
       <div>{label}</div>
-      <div
-        className="cursor-pointer flex items-center justify-between border p-3"
-        onClick={(e) => {
-          e.stopPropagation();
+      <Panel
+        className="cursor-pointer flex p-3 items-center justify-between hover:bg-sky-50"
+        onClick={() => {
           setIsExpanded((prev) => !prev);
         }}
       >
@@ -40,22 +48,22 @@ const Dropdown = ({ label, items, value, handleSelect, className, ...rest }: Dro
         <span className="text-xl">
           <GoChevronDown />
         </span>
-      </div>
+      </Panel>
       {isExpanded && (
-        <div className="border absolute bg-white w-full">
+        <Panel className="absolute w-full z-10">
           {items.map((item) => (
             <div
               key={item.value}
-              className="cursor-pointer p-3 hover:bg-gray-50"
+              className="cursor-pointer p-3 hover:bg-sky-50"
               onClick={() => {
                 handleSelect(item);
-                // setIsExpanded(false);
+                setIsExpanded(false);
               }}
             >
               {item.label}
             </div>
           ))}
-        </div>
+        </Panel>
       )}
     </div>
   );
