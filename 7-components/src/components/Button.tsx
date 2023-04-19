@@ -22,7 +22,6 @@ const Button = ({ rounded, outlined, purpose, children, ...rest }: ButtonProps) 
     "font-bold",
     "py-1.5",
     "px-3",
-    "m-2",
     "inline-flex",
     "items-center",
     "hover:scale-110",

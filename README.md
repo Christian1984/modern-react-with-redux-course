@@ -371,6 +371,32 @@ This repo is a code-along for https://www.udemy.com/course/react-redux/
 
 - `useRef`: create a `ref` in a functional component
 
+## `ReactDOM.createPortal`
+
+- `ReactDOM.createPortal(/* jsx element */, /* target */)` can be used to render content into a specific target, e.g.
+
+```
+const Modal = ({ isOpen, children }: ModalProps) => {
+  if (!isOpen) return null;
+
+  const target = document.querySelector("#modal-container");
+  if (!target) return null;
+
+  return ReactDOM.createPortal(
+    <div>
+      <div className="absolute inset-0 bg-gray-300 opacity-80"></div>
+      <div className="absolute inset-40 p-10 bg-white">
+        <h1>Modal</h1>
+        <div>{children}</div>
+      </div>
+    </div>,
+    target
+  );
+};
+```
+
+- make sure to check that `target !== null`, otherwise the app may break!
+
 # Styling
 
 - CSS files should not be added to the HTML directly, but rather be imported on a per component level with an `import` statement, e.g. `import "./SeasonDisplay.css";`. this instructs the bundler to inject/wire the CSS accordingly
