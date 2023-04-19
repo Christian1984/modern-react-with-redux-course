@@ -8,6 +8,7 @@ const MainNavigation = () => {
       <Link to="/dropdown" label="Dropdown" />
       <Link to="/modal" label="Modal" />
       <Link to="/counter" label="Counter" />
+      <Link to="/reducer-counter" label="Counter (Reducer)" />
     </div>
   );
 };

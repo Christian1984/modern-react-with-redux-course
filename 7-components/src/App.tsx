@@ -5,6 +5,7 @@ import { ButtonPage } from "./pages/ButtonPage";
 import { CounterPage } from "./pages/CounterPage";
 import { DropdownPage } from "./pages/DropdownPage";
 import { ModalPage } from "./pages/ModalPage";
+import { ReducerCounterPage } from "./pages/ReducerCounterPage";
 
 function App() {
   // return <ButtonPage />;
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route route="/counter">
           <CounterPage initialValue={10} />
+        </Route>
+        <Route route="/reducer-counter">
+          <ReducerCounterPage initialValue={10} />
         </Route>
       </div>
     </div>
