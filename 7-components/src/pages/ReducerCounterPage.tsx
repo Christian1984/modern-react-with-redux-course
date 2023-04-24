@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react";
+import { produce } from "immer";
 import { Button, ButtonPurpose } from "../components/Button";
 import { Panel } from "../components/Panel";
 
@@ -24,37 +25,30 @@ type CountState = {
 };
 
 const reducer = (state: CountState, action: CountAction) => {
-  let newCounter = state.counter;
-  let newToAdd = state.toAdd;
-
   switch (action.type) {
     case CountActionType.Increment:
-      newCounter++;
+      state.counter++;
       break;
     case CountActionType.Decrement:
-      newCounter--;
+      state.counter--;
       break;
     case CountActionType.ChangeValueToAdd:
       console.log("payload:", action.payload);
       // console.log("payload == true:", action.payload == true);
       const numericToAdd = parseInt(action.payload ?? "0");
-      newToAdd = isNaN(numericToAdd) ? "0" : numericToAdd.toString();
+      state.toAdd = isNaN(numericToAdd) ? "0" : numericToAdd.toString();
       break;
     case CountActionType.AddValue:
       if (!isNaN(parseInt(state.toAdd))) {
-        newCounter += parseInt(state.toAdd);
+        state.counter += parseInt(state.toAdd);
       }
   }
 
-  return {
-    ...state,
-    toAdd: newToAdd,
-    counter: newCounter,
-  };
+  return state;
 };
 
 const ReducerCounterPage = ({ initialValue }: CounterPageProps) => {
-  const [state, dispatch] = useReducer(reducer, { counter: initialValue, toAdd: "0" });
+  const [state, dispatch] = useReducer(produce(reducer), { counter: initialValue, toAdd: "0" });
 
   return (
     <>
