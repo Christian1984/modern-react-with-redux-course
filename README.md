@@ -426,3 +426,4 @@ const Modal = ({ isOpen, children }: ModalProps) => {
 
 - classnames
 - react-icons
+- immer
