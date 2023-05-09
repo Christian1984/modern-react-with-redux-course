@@ -1,14 +1,14 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, configureStore, createSlice } from "@reduxjs/toolkit";
 
 const songsSlice = createSlice({
   name: "song",
   initialState: [] as string[],
   reducers: {
-    addSong: (state, action) => {
-      state.push(action.payload);
+    addSong: (state, action: PayloadAction<string>) => {
+      state.push(action.payload); // modify the state in place as immer is used under the hood, or...
     },
-    removeSong: (state, action) => {
-      //TODO
+    removeSong: (state, action: PayloadAction<string>) => {
+      return state.filter((el) => el !== action.payload); // return a new object from the reducer.
     },
   },
 });
@@ -19,11 +19,17 @@ const store = configureStore({
   },
 });
 
-console.log(store.getState());
+// console.log(store.getState());
 
-store.dispatch({
-  type: "song/addSong",
-  payload: "New Song",
-});
+// store.dispatch({
+//   type: "song/addSong",
+//   payload: "New Song",
+// });
 
-console.log(store.getState());
+// store.dispatch(songsSlice.actions.addSong("Another new song!"));
+
+// console.log(store.getState());
+
+export { store };
+export type RootState = ReturnType<typeof store.getState>;
+export const { addSong, removeSong } = songsSlice.actions;

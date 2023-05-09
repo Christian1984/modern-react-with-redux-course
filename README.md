@@ -410,6 +410,41 @@ const Modal = ({ isOpen, children }: ModalProps) => {
   2. wrap the entire app inside a Context-Provider with `<MyContext.Provider><App /></MyContext.Provider>`
   3. consume context inside components with `const data = useContext(MyContext)`
 
+# Redux
+
+- Redux is global state management library.
+- Redux Toolkit simplifies interacting with the redux store.
+- react-redux bundles redux bindings for react.
+
+First, use `createSlice` to create slices for data "classes" in your application, such as Videos and Songs in out example.
+
+Then, init the actual store with `configureStore` and hand over the reducers defined when creating the slices.
+
+Finally, an action can be dispatched `store.dispatch(songsSlice.actions.addSong("lalala"))` for example. This is called an `ActionCreator` and simplifies the process of dispatching an action object and makes it pretty typesafe with typescript.
+
+Explicitely typing the action parameter of a slice's reducer function with `PayloadAction<string>`, for example, automatically types the payload properly and avoids `any` typing!
+
+Initialize a new project like so:
+
+1. Create the store as described above and export it. Also export the state's type with `export type RootState = ReturnType<typeof store.getState>;`
+2. Import the store in the main index.ts or main.tsx file, the one that initializes the react app.
+3. Import the Provider component from react-redux.
+4. Wrap the App inside the Provider and pass it the imported store as its store property.
+
+To update the store from a component,
+
+1. Add a reducer to the slice that you want to update. The reducer can either modify the state in place as immer is used under the hood, or return a new object.
+2. Export the action creator created by the slice
+3. Import the action createor and `useDispatch` from react-redux into the component you want to use it from
+4. Call the useDispatch hook to get access to the dispatch function
+5. When the user interacts with the app, call the action creator to get the action and dispatch it.
+
+To access state,
+
+1. Import the `useSelector` hook from react-redux
+2. Create a selector and pass it into the hook. It is a function that takes the store's root state as an argument. Make sure to type it with the `RootType` exported from the store.
+3. Return the slice you are interested in.
+
 # Other Learnings
 
 - semantic ui is a nice css library to quickly style components without heavy customization in the first place (https://semantic-ui.com/ and https://cdnjs.com/libraries/semantic-ui)
