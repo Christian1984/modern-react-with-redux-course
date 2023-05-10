@@ -13,9 +13,23 @@ const songsSlice = createSlice({
   },
 });
 
+const moviesSlice = createSlice({
+  name: "movie",
+  initialState: [] as string[],
+  reducers: {
+    addMovie: (state, action: PayloadAction<string>) => {
+      state.push(action.payload); // modify the state in place as immer is used under the hood, or...
+    },
+    removeMovie: (state, action: PayloadAction<string>) => {
+      return state.filter((el) => el !== action.payload); // return a new object from the reducer.
+    },
+  },
+});
+
 const store = configureStore({
   reducer: {
     songs: songsSlice.reducer,
+    movies: moviesSlice.reducer,
   },
 });
 
@@ -33,3 +47,4 @@ const store = configureStore({
 export { store };
 export type RootState = ReturnType<typeof store.getState>;
 export const { addSong, removeSong } = songsSlice.actions;
+export const { addMovie, removeMovie } = moviesSlice.actions;
