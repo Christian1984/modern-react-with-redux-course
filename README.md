@@ -439,6 +439,8 @@ To update the store from a component,
 4. Call the useDispatch hook to get access to the dispatch function
 5. When the user interacts with the app, call the action creator to get the action and dispatch it.
 
+> redux toolkit uses Immer under the hood. Therefore, we can mutate the state inplace OR return a new state object from a reducer.
+
 To access state,
 
 1. Import the `useSelector` hook from react-redux
