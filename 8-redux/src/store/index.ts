@@ -1,4 +1,6 @@
-import { PayloadAction, configureStore, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, configureStore, createAction, createSlice } from "@reduxjs/toolkit";
+
+const clearStore = createAction("store/reset");
 
 const songsSlice = createSlice({
   name: "song",
@@ -10,7 +12,9 @@ const songsSlice = createSlice({
     removeSong: (state, action: PayloadAction<string>) => {
       return state.filter((el) => el !== action.payload); // return a new object from the reducer.
     },
-    clearSongs: () => [],
+  },
+  extraReducers: (builder) => {
+    builder.addCase(clearStore, () => []);
   },
 });
 
@@ -24,7 +28,9 @@ const moviesSlice = createSlice({
     removeMovie: (state, action: PayloadAction<string>) => {
       return state.filter((el) => el !== action.payload); // return a new object from the reducer.
     },
-    clearMovies: () => [],
+  },
+  extraReducers: (builder) => {
+    builder.addCase(clearStore, () => []);
   },
 });
 
@@ -48,5 +54,6 @@ const store = configureStore({
 
 export { store };
 export type RootState = ReturnType<typeof store.getState>;
-export const { addSong, removeSong, clearSongs } = songsSlice.actions;
-export const { addMovie, removeMovie, clearMovies } = moviesSlice.actions;
+export const { addSong, removeSong } = songsSlice.actions;
+export const { addMovie, removeMovie } = moviesSlice.actions;
+export { clearStore };

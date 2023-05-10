@@ -1,18 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import MoviePlaylist from "./components/MoviePlaylist";
 import SongPlaylist from "./components/SongPlaylist";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, clearMovies, clearSongs } from "./store";
+import { useDispatch } from "react-redux";
+import { clearStore } from "./store";
 
 function App() {
   const dispatch = useDispatch();
 
   const handleResetClick = () => {
-    dispatch(clearMovies());
-    dispatch(clearSongs());
-    //
+    dispatch(clearStore());
   };
 
   return (
