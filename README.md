@@ -447,6 +447,11 @@ To access state,
 2. Create a selector and pass it into the hook. It is a function that takes the store's root state as an argument. Make sure to type it with the `RootType` exported from the store.
 3. Return the slice you are interested in.
 
+To modify multiple slices upon a single user interaction, one could
+
+1. ... either dispatch individual actions, one for each slice. This, however, isn't the "redux way" of doing it.
+2. ... or create a separate action width `createAction("app/reset")`, for example and then make each slice listen for that action by adding `extraReducers`.
+
 # Other Learnings
 
 - semantic ui is a nice css library to quickly style components without heavy customization in the first place (https://semantic-ui.com/ and https://cdnjs.com/libraries/semantic-ui)
