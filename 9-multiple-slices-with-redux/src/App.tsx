@@ -7,9 +7,12 @@ function App() {
   return (
     <div className="container is-max-desktop">
       <CarForm />
-      <CarSearch />
-      <CarList />
-      <CarValue />
+      <div className="panel m-3 p-3">
+        <h4 className="subtitle is-4">My Cars</h4>
+        <CarSearch />
+        <CarList />
+        <CarValue />
+      </div>
     </div>
   );
 }

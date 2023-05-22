@@ -1,7 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
+import { changeSearchTerm } from "../store/slices/carsSlice";
+
 const CarSearch = () => {
+  const dispatch = useDispatch();
+  const searchTerm = useSelector((state: RootState) => state.cars.searchTerm);
+
   return (
-    <div className="cars-list panel m-3 p-3">
-      <h4 className="subtitle is-4">Search Cars</h4>
+    <div className="list-header block">
+      {/* <div className="field is-horizontal is-align-items-center"> */}
+      <div className="field">
+        <label className="label">Search</label>
+        <input className="input" value={searchTerm} onChange={(e) => dispatch(changeSearchTerm(e.target.value))} />
+      </div>
     </div>
   );
 };

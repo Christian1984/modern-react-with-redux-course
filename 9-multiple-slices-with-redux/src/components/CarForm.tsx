@@ -44,8 +44,8 @@ const CarForm = () => {
 
                   dispatch(addCar({ name: name, cost: cost }));
 
-                  dispatch(changeName(""));
-                  dispatch(changeCost(0));
+                  // dispatch(changeName(""));
+                  // dispatch(changeCost(0));
                   nameRef.current?.focus();
                 }}
               >
