@@ -1,14 +1,13 @@
 import className from "classnames";
 
 type ButtonProps = {
-  children: boolean;
-  primary: boolean;
-  secondary: boolean;
-  success: boolean;
-  warning: boolean;
-  danger: boolean;
-  outline: boolean;
-  rounded: boolean;
+  primary?: boolean;
+  secondary?: boolean;
+  success?: boolean;
+  warning?: boolean;
+  danger?: boolean;
+  outline?: boolean;
+  rounded?: boolean;
 } & React.ComponentPropsWithoutRef<"button">;
 
 const Button = ({ children, primary, secondary, success, warning, danger, outline, rounded, ...rest }: ButtonProps) => {

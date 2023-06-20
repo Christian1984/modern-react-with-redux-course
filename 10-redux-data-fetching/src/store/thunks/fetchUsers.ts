@@ -15,7 +15,16 @@ const fetchUsers = createAsyncThunk("users/fetch", async () => {
   // });
 
   const response = await axios.get("http://localhost:3005/users");
+  await pause(2000);
   return response.data as User[];
 });
+
+const pause = async (ms: number) => {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+};
 
 export { fetchUsers };

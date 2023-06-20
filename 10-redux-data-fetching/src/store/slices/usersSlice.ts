@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchUsers } from "../thunks/fetchUsers";
+import { addUser } from "../thunks/addUser";
 
 type User = {
   id: string;
@@ -34,6 +35,20 @@ const usersSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.data = action.payload;
+    });
+
+    builder.addCase(addUser.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(addUser.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = "Could not add user, reason: " + action.error.message;
+    });
+    builder.addCase(addUser.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      state.data.push(action.payload);
     });
   },
 });
