@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"yarn dev\" \"yarn dev:server\"",
-    "dev": "vite",
+    "dev": "concurrently \"yarn dev:client\" \"yarn dev:server\"",
+    "dev:client": "vite",
     "dev:server": "json-server --watch db.json --port 3005",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -15,6 +15,7 @@
     "@faker-js/faker": "^8.0.2",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "classnames": "^2.3.2",
     "json-server": "^0.17.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
