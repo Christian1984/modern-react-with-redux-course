@@ -452,6 +452,23 @@ To modify multiple slices upon a single user interaction, one could
 1. ... either dispatch individual actions, one for each slice. This, however, isn't the "redux way" of doing it.
 2. ... or create a separate action width `createAction("app/reset")`, for example and then make each slice listen for that action by adding `extraReducers`.
 
+## Lazy Loading
+
+Requests should never be made from inside reducers, hence Redux Toolkit comes with two possible means of fetching data:
+
+- Async Think Functions: This method is somewhat outdated.
+
+1. Create new file for the thunk named after the purpose of the thunk, e.g. `fetchUsers.ts`
+2. Create the thunk with `createAsyncThunk` and give it a base "action type", i.e. string identificator, such as e.g. `const fetchUsers = createAsyncThunk("users/fetch", ...)`
+3. From inside the thunk, make the request and return the data that you want to use inside the reducer. That is, create an async function that actually makes the request to the server and pass it as the second argument to `createAsyncThunk`.
+4. In the slice, add `extraReducers`, watching for the action types dispatched by the thunk. The actions are provided through the previously exported thunk and are `fetchUsers.pending`, `fetchUsers.rejected` or `fetchUsers.fulfilled`. The respective data is contained in the `action.payload` property.
+5. Export the thunk from the `store/index.ts` file
+6. When the user does something, dispatch the thunk function to run it!
+
+- Redux Toolkit Query: This is the state of the art method!
+
+> Typically you would decide for one of the two options for the scope of one project. In the example project, we'll use both for demo purposes.
+
 # Other Learnings
 
 - semantic ui is a nice css library to quickly style components without heavy customization in the first place (https://semantic-ui.com/ and https://cdnjs.com/libraries/semantic-ui)
