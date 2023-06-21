@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { User } from "../slices/usersSlice";
+import pause from "./pause";
 
 const fetchUsers = createAsyncThunk("users/fetch", async () => {
   // return new Promise<User[]>((resolve, reject) => {
@@ -14,17 +15,9 @@ const fetchUsers = createAsyncThunk("users/fetch", async () => {
   //   }, 1000);
   // });
 
-  const response = await axios.get("http://localhost:3005/users");
   await pause(2000);
+  const response = await axios.get("http://localhost:3005/users");
   return response.data as User[];
 });
-
-const pause = async (ms: number) => {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-  });
-};
 
 export { fetchUsers };
