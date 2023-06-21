@@ -1,14 +1,6 @@
 {
   "users": [
     {
-      "name": "hans",
-      "id": 1
-    },
-    {
-      "name": "uwe",
-      "id": 2
-    },
-    {
       "name": "Angelo O'Connell",
       "id": 5
     },
@@ -47,14 +39,6 @@
     {
       "name": "Jan Bahringer",
       "id": 14
-    },
-    {
-      "name": "Ernesto Heathcote",
-      "id": 15
-    },
-    {
-      "name": "Franklin Kub",
-      "id": 16
     }
   ],
   "albums": [],

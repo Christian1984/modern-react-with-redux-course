@@ -1,4 +1,5 @@
 import className from "classnames";
+import { GoSync } from "react-icons/go";
 
 type ButtonProps = {
   primary?: boolean;
@@ -8,10 +9,12 @@ type ButtonProps = {
   danger?: boolean;
   outline?: boolean;
   rounded?: boolean;
+  loading?: boolean;
 } & React.ComponentPropsWithoutRef<"button">;
 
-const Button = ({ children, primary, secondary, success, warning, danger, outline, rounded, ...rest }: ButtonProps) => {
-  const classes = className(rest.className, "flex items-center px-3 py-1.5 border", {
+const Button = ({ children, primary, secondary, success, warning, danger, outline, rounded, loading, ...rest }: ButtonProps) => {
+  const classes = className(rest.className, "flex items-center px-3 py-1.5 border h-8", {
+    "opacity-60": rest.disabled,
     "border-blue-500 bg-blue-500 text-white": primary,
     "border-gray-900 bg-gray-900 text-white": secondary,
     "border-green-500 bg-green-500 text-white": success,
@@ -28,7 +31,8 @@ const Button = ({ children, primary, secondary, success, warning, danger, outlin
 
   return (
     <button {...rest} className={classes}>
-      {children}
+      {!loading && children}
+      {loading && <GoSync class="animate-spin" />}
     </button>
   );
 };
