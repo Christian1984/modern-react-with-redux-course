@@ -9,16 +9,20 @@ import { addUser } from "../store/thunks/addUser";
 
 // const UsersList = ({ ...rest }: UsersListProps) => {
 const UsersList = () => {
-  const { data, isLoading, error } = useSelector((state: RootState) => state.users);
+  const { data } = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch<AppDispatch>();
 
   const [isLoadingUsers, setIsLoadingUsers] = useState(false);
   const [loadingUsersError, setLoadingUsersError] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchUsers());
-    // .then(() => console.log("done"))
-    // .catch(() => console.log("err"));
+    setIsLoadingUsers(true);
+    setLoadingUsersError(false);
+
+    dispatch(fetchUsers())
+      .unwrap() // required since the dispatch-promise will per se never go into the catch branch but will always resolve!
+      .catch(() => setLoadingUsersError(true))
+      .finally(() => setIsLoadingUsers(false));
   }, [dispatch]);
 
   return (
@@ -35,9 +39,9 @@ const UsersList = () => {
           + Add User
         </Button>
       </div>
-      {isLoading && <Skeleton count={10} className="h-10 w-full" />}
-      {error && <span>Error: {error}</span>}
-      {!isLoading && !error && data && (
+      {isLoadingUsers && <Skeleton count={10} className="h-10 w-full" />}
+      {loadingUsersError && <span>Error: Users Could not be loaded!</span>}
+      {data && (
         // {data && (
         <ul>
           {data.map((user) => (

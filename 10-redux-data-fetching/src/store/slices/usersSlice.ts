@@ -16,7 +16,7 @@ type UserState = {
 const usersSlice = createSlice({
   name: "users",
   initialState: {
-    data: [{ name: "kai uwe", id: "0" }],
+    data: [],
     isLoading: false,
     error: null,
   } as UserState,
