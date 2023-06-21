@@ -6,7 +6,7 @@ import pause from "./pause";
 
 const addUser = createAsyncThunk("users/add", async () => {
   await pause(2000);
-  const response = await axios.post("http://localhost:3005/userss", {
+  const response = await axios.post("http://localhost:3005/users/", {
     name: faker.person.fullName(),
   });
 

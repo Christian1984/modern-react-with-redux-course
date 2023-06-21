@@ -44,8 +44,16 @@ const UsersList = () => {
       {!isLoadingUsers && data && (
         <ul>
           {data.map((user) => (
-            <li className="mb-2 border rounded" key={user.id}>
-              <div className="flex p-2 justify-between items-center cursor-pointer">{user.name}</div>
+            <li className="mb-2 border rounded flex" key={user.id}>
+              <div
+                className="flex p-2 items-center cursor-pointer"
+                onClick={() => {
+                  console.log("delete", user.id);
+                }}
+              >
+                DELETE
+              </div>
+              <div className="flex p-2 items-center cursor-pointer">{user.name}</div>
             </li>
           ))}
         </ul>
