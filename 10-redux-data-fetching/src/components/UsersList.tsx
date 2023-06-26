@@ -6,6 +6,7 @@ import Button from "./Button";
 import useThunk from "../hooks/useThunk";
 import Error from "./Error";
 import { GoSync, GoTrashcan } from "react-icons/go";
+import UsersListItem from "./UsersListItem";
 
 // type UsersListProps = React.ComponentPropsWithoutRef<"div">;
 
@@ -15,7 +16,6 @@ const UsersList = () => {
 
   const [runFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUsers);
   const [runAddUsers, isCreatingUser, creatingUserError] = useThunk(addUser);
-  const [runDeleteUsers, isDeletingUser, deleteUserError] = useThunk(deleteUser);
 
   useEffect(() => {
     runFetchUsers();
@@ -45,20 +45,7 @@ const UsersList = () => {
 
       {!isLoadingUsers && data && (
         <ul>
-          {data.map((user) => (
-            <li className="mb-2 border rounded flex" key={user.id}>
-              <div
-                className="flex p-2 items-center cursor-pointer"
-                onClick={() => {
-                  !isDeletingUser && runDeleteUsers(user.id);
-                }}
-              >
-                {!isDeletingUser && <GoTrashcan />}
-                {isDeletingUser && <GoSync className="animate-spin" />}
-              </div>
-              <div className="flex p-2 items-center cursor-pointer">{user.name}</div>
-            </li>
-          ))}
+          {data.map(user => (<UsersListItem user={user} />))}
         </ul>
       )}
     </div>
