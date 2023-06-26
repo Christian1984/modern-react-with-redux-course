@@ -1,40 +1,16 @@
 {
   "users": [
     {
-      "name": "Bridget Mann-Hilll",
-      "id": 6
-    },
-    {
-      "name": "Cedric Turcotte I",
-      "id": 7
-    },
-    {
-      "name": "Ollie Ullrich",
-      "id": 8
-    },
-    {
-      "name": "Doreen Bechtelar",
-      "id": 9
-    },
-    {
-      "name": "Johnnie Gulgowski",
-      "id": 10
-    },
-    {
-      "name": "Danielle Halvorson",
-      "id": 11
-    },
-    {
-      "name": "Courtney Brekke",
-      "id": 12
-    },
-    {
       "name": "Marie Bednar",
       "id": 13
     },
     {
-      "name": "Jan Bahringer",
-      "id": 14
+      "name": "Ms. Meredith Franecki",
+      "id": 16
+    },
+    {
+      "name": "Pauline Mayert",
+      "id": 17
     }
   ],
   "albums": [],

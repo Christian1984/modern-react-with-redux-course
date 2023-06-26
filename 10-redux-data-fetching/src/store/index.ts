@@ -15,3 +15,4 @@ export type AppDispatch = typeof store.dispatch; // as per https://redux-toolkit
 
 export * from "./thunks/fetchUsers";
 export * from "./thunks/addUser";
+export * from "./thunks/deleteUser";

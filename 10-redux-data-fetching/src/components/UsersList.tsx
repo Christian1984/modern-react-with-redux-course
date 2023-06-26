@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
-import { RootState, addUser, fetchUsers } from "../store";
+import { RootState, addUser, deleteUser, fetchUsers } from "../store";
 import { useEffect } from "react";
 import Skeleton from "./Skeleton";
 import Button from "./Button";
 import useThunk from "../hooks/useThunk";
 import Error from "./Error";
+import { GoSync, GoTrashcan } from "react-icons/go";
 
 // type UsersListProps = React.ComponentPropsWithoutRef<"div">;
 
@@ -14,6 +15,7 @@ const UsersList = () => {
 
   const [runFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUsers);
   const [runAddUsers, isCreatingUser, creatingUserError] = useThunk(addUser);
+  const [runDeleteUsers, isDeletingUser, deleteUserError] = useThunk(deleteUser);
 
   useEffect(() => {
     runFetchUsers();
@@ -48,10 +50,11 @@ const UsersList = () => {
               <div
                 className="flex p-2 items-center cursor-pointer"
                 onClick={() => {
-                  console.log("delete", user.id);
+                  !isDeletingUser && runDeleteUsers(user.id);
                 }}
               >
-                DELETE
+                {!isDeletingUser && <GoTrashcan />}
+                {isDeletingUser && <GoSync className="animate-spin" />}
               </div>
               <div className="flex p-2 items-center cursor-pointer">{user.name}</div>
             </li>

@@ -32,7 +32,7 @@ const Button = ({ children, primary, secondary, success, warning, danger, outlin
   return (
     <button {...rest} className={classes}>
       {!loading && children}
-      {loading && <GoSync class="animate-spin" />}
+      {loading && <GoSync className="animate-spin" />}
     </button>
   );
 };

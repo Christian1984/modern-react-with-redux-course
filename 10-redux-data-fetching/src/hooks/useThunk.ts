@@ -3,16 +3,16 @@ import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
 
-const useThunk = <T>(thunk: AsyncThunk<T, void, any>): [() => void, boolean, boolean] => {
+const useThunk = <T, V>(thunk: AsyncThunk<T, V, any>): [(param: V) => void, boolean, boolean] => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const runThunk = useCallback(() => {
+  const runThunk = useCallback((param: V) => {
     setIsLoading(true);
     setIsError(false);
-    dispatch(thunk())
+    dispatch(thunk(param))
       .unwrap()
       .catch((err) => {
         console.log(err);
