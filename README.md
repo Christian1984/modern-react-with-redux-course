@@ -480,6 +480,16 @@ Requests should never be made from inside reducers, hence Redux Toolkit comes wi
 - the vscode extension REST client can consume http-files and send requests directly from here.
 - the `classnames` npm library allows for conditionally joining classnames. nice!
 - use `React.ComponentPropsWithoutRef<"button">` (for example) to inherit the properties of a native component (see project 7, Button.tsx for an example); alternatively `React.ButtonHTMLAttributes<HTMLButtonElement>` could be used.
+- when writing deconstructuring assignments, order matters:
+
+```
+const obj = {a: "a", b: "b"}
+const first = {...obj, a: "modified a"}
+const last = {a: "modified a", ...obj}
+
+console.log("first", first) // GOOD: "first", { a: "modified a", b: "b" }
+console.log("last", last) // BAD: "last", { a: "a", b: "b" }
+```
 
 # Helpful Libraries
 

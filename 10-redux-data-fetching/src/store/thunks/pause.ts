@@ -1,8 +1,14 @@
-const pause = async (ms: number) => {
+const enabled = true;
+
+const pause = async (ms?: number) => {
+  if (!enabled) {
+    return Promise.resolve();
+  }
+
   return new Promise<void>((resolve) => {
     setTimeout(() => {
       resolve();
-    }, ms);
+    }, ms || 1000);
   });
 };
 

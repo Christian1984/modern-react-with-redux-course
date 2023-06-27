@@ -63,9 +63,12 @@ const usersSlice = createSlice({
     builder.addCase(deleteUser.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
-      //TODO
-      console.log(action);
-      state.data = state.data.filter(user => user.id !== action.meta.arg);
+
+      // if the thunk action returns an empty object, as in my first draft, this approach works:
+      // console.log(action);
+      // state.data = state.data.filter(user => user.id !== action.meta.arg);
+
+      state.data = state.data.filter((user) => user.id !== action.payload);
     });
   },
 });

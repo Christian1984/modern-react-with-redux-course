@@ -3,10 +3,12 @@ import pause from "./pause";
 import axios from "axios";
 
 const deleteUser = createAsyncThunk("user/delete", async (userId: string) => {
-  await pause(2000);
-  const response = await axios.delete("http://localhost:3005/users/" + userId);
+  await pause();
+  // const response = await axios.delete("http://localhost:3005/users/" + userId);
+  // return response.data; // this will always return an empty object
 
-  return response.data;
+  await axios.delete("http://localhost:3005/users/" + userId);
+  return userId;
 });
 
 export { deleteUser };
