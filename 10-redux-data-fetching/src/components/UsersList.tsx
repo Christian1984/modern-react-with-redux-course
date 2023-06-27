@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux";
-import { RootState, addUser, deleteUser, fetchUsers } from "../store";
+import { RootState, addUser, fetchUsers } from "../store";
 import { useEffect } from "react";
 import Skeleton from "./Skeleton";
 import Button from "./Button";
 import useThunk from "../hooks/useThunk";
 import Error from "./Error";
-import { GoSync, GoTrashcan } from "react-icons/go";
 import UsersListItem from "./UsersListItem";
 
 // type UsersListProps = React.ComponentPropsWithoutRef<"div">;
@@ -45,7 +44,9 @@ const UsersList = () => {
 
       {!isLoadingUsers && data && (
         <ul>
-          {data.map(user => (<UsersListItem user={user} />))}
+          {data.map((user) => (
+            <UsersListItem user={user} key={user.id} />
+          ))}
         </ul>
       )}
     </div>

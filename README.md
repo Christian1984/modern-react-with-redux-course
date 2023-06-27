@@ -496,3 +496,4 @@ console.log("last", last) // BAD: "last", { a: "a", b: "b" }
 - classnames
 - react-icons
 - immer
+- json-server
