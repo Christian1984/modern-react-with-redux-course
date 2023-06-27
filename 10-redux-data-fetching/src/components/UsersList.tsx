@@ -9,7 +9,6 @@ import UsersListItem from "./UsersListItem";
 
 // type UsersListProps = React.ComponentPropsWithoutRef<"div">;
 
-// const UsersList = ({ ...rest }: UsersListProps) => {
 const UsersList = () => {
   const { data } = useSelector((state: RootState) => state.users);
 
@@ -40,7 +39,7 @@ const UsersList = () => {
       {loadingUsersError && <Error title="An Error Occured" message="The users could not be loaded..." />}
       {creatingUserError && <Error title="An Error Occured" message="The user could not be created..." />}
 
-      {isLoadingUsers && <Skeleton count={10} className="h-10 w-full" />}
+      {isLoadingUsers && <Skeleton count={5} className="h-10 w-full" />}
 
       {!isLoadingUsers && data && (
         <ul>
