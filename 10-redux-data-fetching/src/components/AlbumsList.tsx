@@ -1,5 +1,9 @@
+import { useEffect } from "react";
+import { useAddAlbumMutation, useFetchAlbumsQuery } from "../store";
 import { User } from "../store/slices/usersSlice";
+import AlbumsListItem from "./AlbumsListItem";
 import Button from "./Button";
+import Error from "./Error";
 import Skeleton from "./Skeleton";
 
 type AlbumsListProps = {
@@ -7,14 +11,15 @@ type AlbumsListProps = {
 };
 
 const AlbumsList = ({ user }: AlbumsListProps) => {
-  // const { data } = useSelector((state: RootState) => state.users);
+  const { data: albumData, error: fetchAlbumsError, isLoading: isLoadingAlbums, isFetching: isFetchingAlbums, refetch: refetchAlbums } = useFetchAlbumsQuery(user.id);
+  const [addAlbum, addAlbumMutationResults] = useAddAlbumMutation();
 
-  // const [runFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUsers);
-  // const [runAddUsers, isCreatingUser, creatingUserError] = useThunk(addUser);
-
-  // useEffect(() => {
-  //   runFetchUsers();
-  // }, [runFetchUsers]);
+  useEffect(() => {
+    console.log(addAlbumMutationResults.isSuccess)
+    if (addAlbumMutationResults.isSuccess) {
+      refetchAlbums();
+    }
+  }, [addAlbumMutationResults.isSuccess, refetchAlbums])
 
   return (
     <div>
@@ -23,29 +28,37 @@ const AlbumsList = ({ user }: AlbumsListProps) => {
         <span>
           <Button
             outline
-            // disabled={isCreatingUser || isLoadingUsers}
-            // loading={isCreatingUser}
+            disabled={isFetchingAlbums || addAlbumMutationResults.isLoading}
+            loading={addAlbumMutationResults.isLoading}
             onClick={() => {
-              // runAddUsers();
+              addAlbum(user.id)
             }}
           >
             + Add Album
           </Button>
         </span>
       </div>
-      {/* {loadingUsersError && <Error title="An Error Occured" message="The albums could not be loaded..." />} */}
+      {fetchAlbumsError && <Error title="An Error Occured" message="The albums could not be loaded..." />}
       {/* {creatingUserError && <Error title="An Error Occured" message="The album could not be created..." />} */}
 
-      {/* {isLoadingUsers && <Skeleton count={5} className="h-10 w-full" />} */}
-      <Skeleton count={3} className="h-10 w-full" />
-
-      {/* {!isLoadingUsers && data && (
+      {/* {!isLoadingAlbums && albumData && (
         <ul>
-          {data.map((user) => (
-            <UsersListItem user={user} key={user.id} />
+          {albumData.map((album) => (
+            <AlbumsListItem album={album} key={album.id} />
           ))}
         </ul>
-      )} */}
+      )}
+
+      {(isLoadingAlbums || isFetchingAlbums) && <Skeleton count={isLoadingAlbums ? 3 : 1} className="h-10 w-full" />} */}
+
+      {!isFetchingAlbums && albumData && (
+        <ul>
+          {albumData.map((album) => (
+            <AlbumsListItem album={album} key={album.id} />
+          ))}
+        </ul>
+      )}
+      { isFetchingAlbums && <Skeleton count={3} className="h-10 w-full" />}
     </div>
   );
 };

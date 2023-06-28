@@ -1,13 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { usersReducer } from "./slices/usersSlice";
-import albumsApi from "./apis/albumsApi";
+import { albumsApi } from "./apis/albumsApi";
+import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 const store = configureStore({
   reducer: {
     users: usersReducer,
-    albums: albumsApi.reducer,
+    [albumsApi.reducerPath]: albumsApi.reducer, // this helps to avoid typos and inconsistencies
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(albumsApi.middleware),
 });
+
+setupListeners(store.dispatch);
 
 export default store;
 export { store };
@@ -18,3 +22,4 @@ export type AppDispatch = typeof store.dispatch; // as per https://redux-toolkit
 export * from "./thunks/fetchUsers";
 export * from "./thunks/addUser";
 export * from "./thunks/deleteUser";
+export { useFetchAlbumsQuery, useAddAlbumMutation } from "./apis/albumsApi";

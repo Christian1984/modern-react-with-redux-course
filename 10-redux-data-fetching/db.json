@@ -17,6 +17,72 @@
       "id": 31
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "id": 1,
+      "name": "Sommerferien",
+      "userId": "28"
+    },
+    {
+      "name": "Elegant Metal Keyboard",
+      "userId": 28,
+      "id": 2
+    },
+    {
+      "name": "Refined Cotton Table",
+      "userId": 28,
+      "id": 3
+    },
+    {
+      "name": "Licensed Fresh Hat",
+      "userId": 28,
+      "id": 4
+    },
+    {
+      "name": "Unbranded Plastic Pants",
+      "userId": 29,
+      "id": 5
+    },
+    {
+      "name": "Practical Wooden Towels",
+      "userId": 28,
+      "id": 6
+    },
+    {
+      "name": "Electronic Frozen Hat",
+      "userId": 29,
+      "id": 7
+    },
+    {
+      "name": "Electronic Frozen Chips",
+      "userId": 28,
+      "id": 8
+    },
+    {
+      "name": "Ergonomic Soft Towels",
+      "userId": 29,
+      "id": 9
+    },
+    {
+      "name": "Elegant Steel Salad",
+      "userId": 28,
+      "id": 10
+    },
+    {
+      "name": "Unbranded Soft Car",
+      "userId": 28,
+      "id": 11
+    },
+    {
+      "name": "Luxurious Steel Cheese",
+      "userId": 29,
+      "id": 12
+    },
+    {
+      "name": "Generic Granite Shoes",
+      "userId": 28,
+      "id": 13
+    }
+  ],
   "photos": []
 }

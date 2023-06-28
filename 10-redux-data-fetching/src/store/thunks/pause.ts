@@ -1,4 +1,4 @@
-const enabled = true;
+const enabled = false;
 
 const pause = async (ms?: number) => {
   if (!enabled) {

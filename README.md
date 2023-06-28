@@ -456,7 +456,7 @@ To modify multiple slices upon a single user interaction, one could
 
 Requests should never be made from inside reducers, hence Redux Toolkit comes with two possible means of fetching data:
 
-- Async Think Functions: This method is somewhat outdated.
+### Async Think Functions: This method is somewhat outdated.
 
 1. Create new file for the thunk named after the purpose of the thunk, e.g. `fetchUsers.ts`
 2. Create the thunk with `createAsyncThunk` and give it a base "action type", i.e. string identificator, such as e.g. `const fetchUsers = createAsyncThunk("users/fetch", ...)`
@@ -465,7 +465,45 @@ Requests should never be made from inside reducers, hence Redux Toolkit comes wi
 5. Export the thunk from the `store/index.ts` file
 6. When the user does something, dispatch the thunk function to run it!
 
-- Redux Toolkit Query: This is the state of the art method!
+### Redux Toolkit Query: This is the state of the art method!
+
+With RTK Query you create an API for each "slice".
+
+1. Identify a group of related requests that your app needs to make.
+2. Make a new file that will create the API, e.g. `src/store/api/albumsApi.ts`
+3. The API needs to store a ton of state related data, requests, status, errors. Add a `reducerPath` which is simply a name that redux uses to address this reducer, e.g. `reducerPath: "albums"`
+4. The API needs to know how and where to send requests. Add a `baseQuery`, e.g. `baseQuery: "http://localhost:3005`
+5. Add "endpoints", one for each kind of request you want to make. Requests that *read* data are **queries**, requests that *modify* data are **mutations**.
+6. Export all of the automatically created hooks, e.g. `export const { useFetchAlbumsQuery, useAddAlbumMutation } = albumsApi;`
+7. Connect the API to the store. Reducer, middleware and listeners:
+
+   ```
+   const store = configureStore({
+     reducer: {
+       // ...
+       [albumsApi.reducerPath]: albumsApi.reducer, // this helps to avoid typos and inconsistencies
+     },
+     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(albumsApi.middleware),
+   });
+
+   setupListeners(store.dispatch);
+
+   //...
+
+   export { useFetchAlbumsQuery, useAddAlbumMutation } from "./apis/albumsApi";
+   ```
+
+8. Re-export the hooks from the `store/index.ts` file
+9. Use the generated hooks in a component, e.g.:
+
+```
+const AlbumsList = ({ user }: AlbumsListProps) => {
+  const { data: albumData, error: fetchAlbumsError, isLoading: isLoadingAlbums, isFetching: isFetchingAlbums } = useFetchAlbumsQuery(user.id);
+  const [addAlbum, addAlbumMutationResults] = useAddAlbumMutation();
+
+  //...
+}
+```
 
 > Typically you would decide for one of the two options for the scope of one project. In the example project, we'll use both for demo purposes.
 
