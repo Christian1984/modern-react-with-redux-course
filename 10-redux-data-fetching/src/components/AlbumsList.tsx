@@ -11,15 +11,8 @@ type AlbumsListProps = {
 };
 
 const AlbumsList = ({ user }: AlbumsListProps) => {
-  const { data: albumData, error: fetchAlbumsError, isLoading: isLoadingAlbums, isFetching: isFetchingAlbums, refetch: refetchAlbums } = useFetchAlbumsQuery(user.id);
+  const { data: albumData, error: fetchAlbumsError, isLoading: isLoadingAlbums, isFetching: isFetchingAlbums } = useFetchAlbumsQuery(user.id);
   const [addAlbum, addAlbumMutationResults] = useAddAlbumMutation();
-
-  useEffect(() => {
-    console.log(addAlbumMutationResults.isSuccess)
-    if (addAlbumMutationResults.isSuccess) {
-      refetchAlbums();
-    }
-  }, [addAlbumMutationResults.isSuccess, refetchAlbums])
 
   return (
     <div>
