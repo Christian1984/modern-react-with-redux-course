@@ -32,7 +32,7 @@ const AlbumsList = ({ user }: AlbumsListProps) => {
         </span>
       </div>
       {fetchAlbumsError && <Error title="An Error Occured" message="The albums could not be loaded..." />}
-      {/* {creatingUserError && <Error title="An Error Occured" message="The album could not be created..." />} */}
+      {addAlbumMutationResults.isError && <Error title="An Error Occured" message="The album could not be created..." />}
 
       {/* {!isLoadingAlbums && albumData && (
         <ul>

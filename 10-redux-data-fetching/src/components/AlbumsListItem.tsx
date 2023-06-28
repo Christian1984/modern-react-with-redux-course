@@ -1,26 +1,25 @@
 import { GoSync, GoTrashcan } from "react-icons/go";
-import { deleteUser } from "../store";
 import Error from "./Error";
 import ExpandablePanel from "./ExpandablePanel";
-import { Album } from "../store/apis/albumsApi";
+import { Album, useDeleteAlbumMutation } from "../store/apis/albumsApi";
 
 const AlbumsListItem = ({ album }: { album: Album }) => {
-  // const [runDeleteUsers, isDeletingUser, deleteUserError] = useThunk(deleteUser);
+  const [deleteAlbum, deleteAlbumMutationResults] = useDeleteAlbumMutation();
 
-  // const errorBanner = deleteUserError && <Error title="An Error Occured" message="The user could not be deleted..." />;
-  const errorBanner = <></>;
+  const errorBanner = deleteAlbumMutationResults.isError && <Error title="An Error Occured" message="The user could not be deleted..." />;
   const header = (
     <>
       <div
         className="cursor-pointer"
         onClick={(e) => {
           e.stopPropagation();
-          // !isDeletingUser && runDeleteUsers(user.id);
+          if (!deleteAlbumMutationResults.isLoading) {
+            deleteAlbum(album);
+          }
         }}
       >
-        <GoTrashcan />
-        {/* {!isDeletingUser && <GoTrashcan />} */}
-        {/* {isDeletingUser && <GoSync className="animate-spin" />} */}
+        {!deleteAlbumMutationResults.isLoading && <GoTrashcan />}
+        {deleteAlbumMutationResults.isLoading && <GoSync className="animate-spin" />}
       </div>
       <div className="p-2 cursor-pointer">{album.name}</div>
     </>

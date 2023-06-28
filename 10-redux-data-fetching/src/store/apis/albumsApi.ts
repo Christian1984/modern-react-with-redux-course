@@ -34,11 +34,18 @@ const albumsApi = createApi({
         },
         method: "POST"
       })
+    }),
+    deleteAlbum: builder.mutation<Album, Album>({
+      invalidatesTags: (result, error, album) => [{type: "albums", id: album.userId}],
+      query: (album) => ({
+        url: "/albums/" + album.id,
+        method: "DELETE"
+      })
     })
   }),
 });
 
 export type { Album };
 
-export const { useFetchAlbumsQuery, useAddAlbumMutation } = albumsApi;
+export const { useFetchAlbumsQuery, useAddAlbumMutation, useDeleteAlbumMutation } = albumsApi;
 export { albumsApi };
