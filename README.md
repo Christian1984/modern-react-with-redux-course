@@ -505,6 +505,29 @@ const AlbumsList = ({ user }: AlbumsListProps) => {
 }
 ```
 
+RTK query has a tag system that allows mutations to invalidate previously run fetch requests and thus refetch data. Here's an example:
+
+```
+const albumsApi = createApi({
+  //...
+  tagTypes: ["albums"],
+  endpoints: (builder) => ({
+    fetchAlbums: builder.query<Album[], string>({
+      providesTags: (result, error, userId) => [{type: "albums", id: userId}],
+      query: (userId) => ({
+        //...
+      }),
+    }),
+    addAlbum: builder.mutation<Album, string>({
+      invalidatesTags: (result, error, userId) => [{type: "albums", id: userId}],
+      query: (userId) => ({
+        //...
+      })
+    })
+  }),
+});
+```
+
 > Typically you would decide for one of the two options for the scope of one project. In the example project, we'll use both for demo purposes.
 
 # Other Learnings
