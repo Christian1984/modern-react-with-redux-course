@@ -11,7 +11,12 @@ type AlbumsListProps = {
 };
 
 const AlbumsList = ({ user }: AlbumsListProps) => {
-  const { data: albumData, error: fetchAlbumsError, isLoading: isLoadingAlbums, isFetching: isFetchingAlbums } = useFetchAlbumsQuery(user.id);
+  const {
+    data: albumData,
+    error: fetchAlbumsError,
+    isLoading: isLoadingAlbums,
+    isFetching: isFetchingAlbums,
+  } = useFetchAlbumsQuery(user.id);
   const [addAlbum, addAlbumMutationResults] = useAddAlbumMutation();
 
   return (
@@ -24,7 +29,7 @@ const AlbumsList = ({ user }: AlbumsListProps) => {
             disabled={isFetchingAlbums || addAlbumMutationResults.isLoading}
             loading={addAlbumMutationResults.isLoading}
             onClick={() => {
-              addAlbum(user.id)
+              addAlbum(user.id);
             }}
           >
             + Add Album
@@ -51,7 +56,7 @@ const AlbumsList = ({ user }: AlbumsListProps) => {
           ))}
         </ul>
       )}
-      { isFetchingAlbums && <Skeleton count={3} className="h-10 w-full" />}
+      {isFetchingAlbums && <Skeleton count={3} className="h-10 w-full" />}
     </div>
   );
 };

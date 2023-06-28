@@ -19,16 +19,6 @@
   ],
   "albums": [
     {
-      "id": 1,
-      "name": "Sommerferien",
-      "userId": "28"
-    },
-    {
-      "name": "Elegant Metal Keyboard",
-      "userId": 28,
-      "id": 2
-    },
-    {
       "name": "Refined Cotton Table",
       "userId": 28,
       "id": 3
@@ -37,11 +27,6 @@
       "name": "Licensed Fresh Hat",
       "userId": 28,
       "id": 4
-    },
-    {
-      "name": "Unbranded Plastic Pants",
-      "userId": 29,
-      "id": 5
     },
     {
       "name": "Practical Wooden Towels",
@@ -54,11 +39,6 @@
       "id": 8
     },
     {
-      "name": "Ergonomic Soft Towels",
-      "userId": 29,
-      "id": 9
-    },
-    {
       "name": "Elegant Steel Salad",
       "userId": 28,
       "id": 10
@@ -69,34 +49,14 @@
       "id": 11
     },
     {
-      "name": "Luxurious Steel Cheese",
-      "userId": 29,
-      "id": 12
-    },
-    {
       "name": "Generic Granite Shoes",
       "userId": 28,
       "id": 13
     },
     {
-      "name": "Elegant Fresh Bacon",
-      "userId": 28,
-      "id": 14
-    },
-    {
       "name": "Handmade Metal Table",
       "userId": 31,
       "id": 15
-    },
-    {
-      "name": "Fantastic Plastic Chips",
-      "userId": 31,
-      "id": 16
-    },
-    {
-      "name": "Sleek Metal Shirt",
-      "userId": 30,
-      "id": 17
     },
     {
       "name": "Small Rubber Computer",
@@ -109,9 +69,34 @@
       "id": 20
     },
     {
-      "name": "Handmade Rubber Tuna",
+      "name": "Modern Rubber Chips",
+      "userId": 30,
+      "id": 22
+    },
+    {
+      "name": "Luxurious Concrete Chips",
       "userId": 29,
-      "id": 21
+      "id": 23
+    },
+    {
+      "name": "Licensed Granite Computer",
+      "userId": 29,
+      "id": 24
+    },
+    {
+      "name": "Modern Fresh Pizza",
+      "userId": 31,
+      "id": 25
+    },
+    {
+      "name": "Awesome Steel Fish",
+      "userId": 28,
+      "id": 26
+    },
+    {
+      "name": "Bespoke Soft Shirt",
+      "userId": 31,
+      "id": 27
     }
   ],
   "photos": []

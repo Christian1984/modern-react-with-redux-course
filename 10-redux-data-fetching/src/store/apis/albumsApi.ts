@@ -12,10 +12,10 @@ const albumsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3005",
   }),
-  tagTypes: ["albums"],
+  tagTypes: ["album", "userAlbums"],
   endpoints: (builder) => ({
     fetchAlbums: builder.query<Album[], string>({
-      providesTags: (result, error, userId) => [{type: "albums", id: userId}],
+      providesTags: (result, error, userId) => [{type: "userAlbums", id: userId}, ...(result?.map(album => ({type: "album" as const, id: album.id})) ?? [])],
       query: (userId) => ({
         url: "/albums",
         params: {
@@ -25,7 +25,7 @@ const albumsApi = createApi({
       }),
     }),
     addAlbum: builder.mutation<Album, string>({
-      invalidatesTags: (result, error, userId) => [{type: "albums", id: userId}],
+      invalidatesTags: (result, error, userId) => [{type: "userAlbums", id: userId}],
       query: (userId) => ({
         url: "/albums",
         body: {
@@ -35,10 +35,10 @@ const albumsApi = createApi({
         method: "POST"
       })
     }),
-    deleteAlbum: builder.mutation<Album, Album>({
-      invalidatesTags: (result, error, album) => [{type: "albums", id: album.userId}],
+    deleteAlbum: builder.mutation<Album, string>({
+      invalidatesTags: (result, error, album) => [{type: "album", id: album}],
       query: (album) => ({
-        url: "/albums/" + album.id,
+        url: "/albums/" + album,
         method: "DELETE"
       })
     })

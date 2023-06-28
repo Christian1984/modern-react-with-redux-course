@@ -6,7 +6,9 @@ import { Album, useDeleteAlbumMutation } from "../store/apis/albumsApi";
 const AlbumsListItem = ({ album }: { album: Album }) => {
   const [deleteAlbum, deleteAlbumMutationResults] = useDeleteAlbumMutation();
 
-  const errorBanner = deleteAlbumMutationResults.isError && <Error title="An Error Occured" message="The user could not be deleted..." />;
+  const errorBanner = deleteAlbumMutationResults.isError && (
+    <Error title="An Error Occured" message="The user could not be deleted..." />
+  );
   const header = (
     <>
       <div
@@ -14,7 +16,7 @@ const AlbumsListItem = ({ album }: { album: Album }) => {
         onClick={(e) => {
           e.stopPropagation();
           if (!deleteAlbumMutationResults.isLoading) {
-            deleteAlbum(album);
+            deleteAlbum(album.id);
           }
         }}
       >
@@ -24,6 +26,13 @@ const AlbumsListItem = ({ album }: { album: Album }) => {
       <div className="p-2 cursor-pointer">{album.name}</div>
     </>
   );
+
+  // return !deleteAlbumMutationResults.isSuccess ? <li>
+  //     <ExpandablePanel header={header} errorBanner={errorBanner}>
+  //       {/* <AlbumsList user={user} /> */}
+  //       CONTENT
+  //     </ExpandablePanel>
+  //   </li> : <></>
 
   return (
     <li>
