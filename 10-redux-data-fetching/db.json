@@ -101,39 +101,58 @@
   ],
   "photos": [
     {
-      "name": "Oriental Plastic Pizza",
-      "albumId": 23,
-      "id": 1
-    },
-    {
-      "name": "Generic Rubber Pants",
-      "albumId": 23,
-      "id": 2
-    },
-    {
-      "name": "Fantastic Steel Bike",
+      "name": "Fantastic Cotton Gloves",
+      "url": "https://picsum.photos/seed/JzRh1s/150/150",
       "albumId": 3,
       "id": 3
     },
     {
-      "name": "Modern Fresh Tuna",
-      "albumId": 3,
-      "id": 4
-    },
-    {
-      "name": "Fantastic Steel Fish",
+      "name": "Recycled Wooden Pizza",
+      "url": "https://picsum.photos/seed/msYMxwiXn/150/150",
       "albumId": 3,
       "id": 5
     },
     {
-      "name": "Refined Granite Shoes",
-      "albumId": 4,
+      "name": "Fantastic Metal Bike",
+      "url": "https://picsum.photos/seed/QOqWIwv/150/150",
+      "albumId": 3,
       "id": 7
     },
     {
-      "name": "Practical Rubber Sausages",
-      "albumId": 4,
+      "name": "Sleek Steel Fish",
+      "url": "https://picsum.photos/seed/IgibnnY/150/150",
+      "albumId": 3,
       "id": 8
+    },
+    {
+      "name": "Elegant Wooden Ball",
+      "url": "https://picsum.photos/seed/pzXuyeQ/150/150",
+      "albumId": 3,
+      "id": 9
+    },
+    {
+      "name": "Fantastic Soft Sausages",
+      "url": "https://picsum.photos/seed/ds0bro/150/150",
+      "albumId": 3,
+      "id": 10
+    },
+    {
+      "name": "Intelligent Wooden Sausages",
+      "url": "https://picsum.photos/seed/9v02T1flw/150/150",
+      "albumId": 3,
+      "id": 11
+    },
+    {
+      "name": "Small Steel Car",
+      "url": "https://picsum.photos/seed/gGMpE/150/150",
+      "albumId": 3,
+      "id": 12
+    },
+    {
+      "name": "Rustic Plastic Pizza",
+      "url": "https://picsum.photos/seed/CBEaIb210/150/150",
+      "albumId": 4,
+      "id": 13
     }
   ]
 }

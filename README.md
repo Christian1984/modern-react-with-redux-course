@@ -528,6 +528,32 @@ const albumsApi = createApi({
 });
 ```
 
+This system can be extended further by adding very "granular" tags:
+
+```
+const photosApi = createApi({
+  //...
+  tagTypes: ["photo", "albumPhotos"],
+  endpoints: (builder) => ({
+    fetchPhotos: builder.query<Photo[], string>({
+      providesTags: (result, error, albumId) => [
+        { type: "albumPhotos", id: albumId },
+        ...(result?.map((photo) => ({ type: "photo" as const, id: photo.id })) ?? []),
+      ],
+      //...
+    }),
+    addPhoto: builder.mutation<Photo, string>({
+      invalidatesTags: (result, error, albumId) => [{ type: "albumPhotos", id: albumId }],
+      //...
+    }),
+    deletePhoto: builder.mutation<Photo, string>({
+      invalidatesTags: (result, error, photoId) => [{ type: "photo", id: photoId }],
+      //...
+    }),
+  }),
+});
+```
+
 > Typically you would decide for one of the two options for the scope of one project. In the example project, we'll use both for demo purposes.
 
 # Other Learnings

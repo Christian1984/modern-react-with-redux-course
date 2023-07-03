@@ -4,6 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 type Photo = {
   id: string;
   name: string;
+  url: string;
   albumId: string;
 };
 
@@ -33,6 +34,10 @@ const photosApi = createApi({
         url: "/photos",
         body: {
           name: faker.commerce.productName(),
+          url: faker.image.urlPicsumPhotos({
+            width: 150,
+            height: 150,
+          }),
           albumId: albumId,
         },
         method: "POST",
