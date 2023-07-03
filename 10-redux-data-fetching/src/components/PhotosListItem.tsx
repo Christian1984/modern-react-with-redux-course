@@ -13,8 +13,26 @@ const PhotosListItem = ({ photo }: { photo: Photo }) => {
   return (
     <li>
       {errorBanner}
-      <div className="flex flex-col items-center m-2 p-2 border rounded">
-        <img src={photo.url} className="h-20 w-20 mb-2" alt={photo.name} />
+      <div className="flex flex-col items-center m-2 p-2 border rounded relative">
+        <img src={photo.url} className="h-20 w-20" alt={photo.name} />
+        {!deletePhotoMutationResults.isLoading && (
+          <div
+            className="absolute inset-0 flex items-center justify-center text-gray-600 cursor-pointer hover:bg-gray-200 opacity-0 hover:opacity-80"
+            onClick={(e) => {
+              e.stopPropagation();
+              if (!deletePhotoMutationResults.isLoading) {
+                deletePhoto(photo.id);
+              }
+            }}
+          >
+            <GoTrashcan className="text-3xl" />
+          </div>
+        )}
+        {deletePhotoMutationResults.isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center text-gray-600 pointer-events-none bg-gray-200 opacity-80">
+            <GoSync className="text-3xl animate-spin" />
+          </div>
+        )}
         {/* <div className="p-2 cursor-pointer">{photo.name}</div> */}
         <div
           className="cursor-pointer"
@@ -25,8 +43,8 @@ const PhotosListItem = ({ photo }: { photo: Photo }) => {
             }
           }}
         >
-          {!deletePhotoMutationResults.isLoading && <GoTrashcan />}
-          {deletePhotoMutationResults.isLoading && <GoSync className="animate-spin" />}
+          {/* {!deletePhotoMutationResults.isLoading && <GoTrashcan />} */}
+          {/* {deletePhotoMutationResults.isLoading && <GoSync className="animate-spin" />} */}
         </div>
       </div>
     </li>

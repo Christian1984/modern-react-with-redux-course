@@ -113,12 +113,6 @@
       "id": 5
     },
     {
-      "name": "Fantastic Metal Bike",
-      "url": "https://picsum.photos/seed/QOqWIwv/150/150",
-      "albumId": 3,
-      "id": 7
-    },
-    {
       "name": "Sleek Steel Fish",
       "url": "https://picsum.photos/seed/IgibnnY/150/150",
       "albumId": 3,
@@ -149,10 +143,22 @@
       "id": 12
     },
     {
-      "name": "Rustic Plastic Pizza",
-      "url": "https://picsum.photos/seed/CBEaIb210/150/150",
-      "albumId": 4,
+      "name": "Tasty Rubber Pants",
+      "url": "https://picsum.photos/seed/JDLC68Neq/150/150",
+      "albumId": 3,
       "id": 13
+    },
+    {
+      "name": "Bespoke Steel Soap",
+      "url": "https://picsum.photos/seed/37TVzIg9H/150/150",
+      "albumId": 4,
+      "id": 15
+    },
+    {
+      "name": "Generic Frozen Ball",
+      "url": "https://picsum.photos/seed/j2AbO0/150/150",
+      "albumId": 4,
+      "id": 16
     }
   ]
 }

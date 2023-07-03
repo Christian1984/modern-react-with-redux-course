@@ -27,7 +27,7 @@ const Skeleton = ({ count, className }: SkeletonProps) => {
     );
   }
 
-  return <div>{boxes}</div>;
+  return <>{boxes}</>;
 };
 
 export default Skeleton;
