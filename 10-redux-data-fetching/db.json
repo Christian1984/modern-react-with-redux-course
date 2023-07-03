@@ -159,6 +159,24 @@
       "url": "https://picsum.photos/seed/j2AbO0/150/150",
       "albumId": 4,
       "id": 16
+    },
+    {
+      "name": "Handcrafted Wooden Pizza",
+      "url": "https://picsum.photos/seed/czPS8/150/150",
+      "albumId": 4,
+      "id": 18
+    },
+    {
+      "name": "Oriental Steel Chicken",
+      "url": "https://picsum.photos/seed/rfgty/150/150",
+      "albumId": 15,
+      "id": 19
+    },
+    {
+      "name": "Practical Concrete Chips",
+      "url": "https://picsum.photos/seed/GN4i6Shb3/150/150",
+      "albumId": 15,
+      "id": 21
     }
   ]
 }

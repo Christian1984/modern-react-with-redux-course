@@ -1,7 +1,7 @@
 import Button from "./Button";
 import Error from "./Error";
 import Skeleton from "./Skeleton";
-import { GoPlus } from "react-icons/go";
+import { GoPlus, GoSync } from "react-icons/go";
 import { Album } from "../store/apis/albumsApi";
 import { useAddPhotoMutation, useFetchPhotosQuery } from "../store/apis/photosApi";
 import PhotosListItem from "./PhotosListItem";
@@ -29,13 +29,22 @@ const PhotosList = ({ album }: PhotosListProps) => {
           <li
             className="flex flex-col items-center m-2 p-2 border rounded relative"
             onClick={() => {
-              addPhoto(album.id);
+              if (!addPhotoMutationResults.isLoading) {
+                addPhoto(album.id);
+              }
             }}
           >
             <div className="w-20 h-20"></div>
-            <div className="absolute inset-0 flex items-center justify-center hover:text-gray-600 cursor-pointer hover:bg-gray-200">
-              <GoPlus className="text-3xl" />
-            </div>
+            {!addPhotoMutationResults.isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center hover:text-gray-600 cursor-pointer hover:bg-gray-200">
+                <GoPlus className="text-3xl" />
+              </div>
+            )}
+            {addPhotoMutationResults.isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center text-gray-600 cursor-pointer bg-gray-200">
+                <GoSync className="text-3xl animate-spin" />
+              </div>
+            )}
           </li>
         </ul>
       )}
