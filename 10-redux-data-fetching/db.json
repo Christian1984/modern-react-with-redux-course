@@ -99,5 +99,41 @@
       "id": 27
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "name": "Oriental Plastic Pizza",
+      "albumId": 23,
+      "id": 1
+    },
+    {
+      "name": "Generic Rubber Pants",
+      "albumId": 23,
+      "id": 2
+    },
+    {
+      "name": "Fantastic Steel Bike",
+      "albumId": 3,
+      "id": 3
+    },
+    {
+      "name": "Modern Fresh Tuna",
+      "albumId": 3,
+      "id": 4
+    },
+    {
+      "name": "Fantastic Steel Fish",
+      "albumId": 3,
+      "id": 5
+    },
+    {
+      "name": "Refined Granite Shoes",
+      "albumId": 4,
+      "id": 7
+    },
+    {
+      "name": "Practical Rubber Sausages",
+      "albumId": 4,
+      "id": 8
+    }
+  ]
 }

@@ -15,7 +15,10 @@ const albumsApi = createApi({
   tagTypes: ["album", "userAlbums"],
   endpoints: (builder) => ({
     fetchAlbums: builder.query<Album[], string>({
-      providesTags: (result, error, userId) => [{type: "userAlbums", id: userId}, ...(result?.map(album => ({type: "album" as const, id: album.id})) ?? [])],
+      providesTags: (result, error, userId) => [
+        { type: "userAlbums", id: userId },
+        ...(result?.map((album) => ({ type: "album" as const, id: album.id })) ?? []),
+      ],
       query: (userId) => ({
         url: "/albums",
         params: {
@@ -25,23 +28,23 @@ const albumsApi = createApi({
       }),
     }),
     addAlbum: builder.mutation<Album, string>({
-      invalidatesTags: (result, error, userId) => [{type: "userAlbums", id: userId}],
+      invalidatesTags: (result, error, userId) => [{ type: "userAlbums", id: userId }],
       query: (userId) => ({
         url: "/albums",
         body: {
           name: faker.commerce.productName(),
-          userId: userId
+          userId: userId,
         },
-        method: "POST"
-      })
+        method: "POST",
+      }),
     }),
     deleteAlbum: builder.mutation<Album, string>({
-      invalidatesTags: (result, error, album) => [{type: "album", id: album}],
+      invalidatesTags: (result, error, album) => [{ type: "album", id: album }],
       query: (album) => ({
         url: "/albums/" + album,
-        method: "DELETE"
-      })
-    })
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 

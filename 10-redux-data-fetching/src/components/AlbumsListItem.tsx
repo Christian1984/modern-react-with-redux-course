@@ -2,6 +2,7 @@ import { GoSync, GoTrashcan } from "react-icons/go";
 import Error from "./Error";
 import ExpandablePanel from "./ExpandablePanel";
 import { Album, useDeleteAlbumMutation } from "../store/apis/albumsApi";
+import PhotosList from "./PhotosList";
 
 const AlbumsListItem = ({ album }: { album: Album }) => {
   const [deleteAlbum, deleteAlbumMutationResults] = useDeleteAlbumMutation();
@@ -37,8 +38,7 @@ const AlbumsListItem = ({ album }: { album: Album }) => {
   return (
     <li>
       <ExpandablePanel header={header} errorBanner={errorBanner}>
-        {/* <AlbumsList user={user} /> */}
-        CONTENT
+        <PhotosList album={album} />
       </ExpandablePanel>
     </li>
   );
