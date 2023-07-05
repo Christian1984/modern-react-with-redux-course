@@ -27,7 +27,7 @@ const PhotosList = ({ album }: PhotosListProps) => {
             <PhotosListItem photo={photo} key={photo.id} />
           ))}
           <li
-            className="flex flex-col items-center m-2 p-2 border rounded relative"
+            className="flex flex-col items-center m-2 border rounded relative"
             onClick={() => {
               if (!addPhotoMutationResults.isLoading) {
                 addPhoto(album.id);
@@ -51,7 +51,7 @@ const PhotosList = ({ album }: PhotosListProps) => {
 
       {isFetching && (
         <div className="flex flew-row flex-wrap">
-          <Skeleton count={10} className="h-24 w-24 m-2 border" />
+          <Skeleton count={10} className="h-20 w-20 m-2 border" />
         </div>
       )}
     </div>

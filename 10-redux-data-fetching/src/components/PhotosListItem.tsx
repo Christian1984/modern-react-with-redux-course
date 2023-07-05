@@ -13,8 +13,8 @@ const PhotosListItem = ({ photo }: { photo: Photo }) => {
   return (
     <li>
       {errorBanner}
-      <div className="flex flex-col items-center m-2 p-2 border rounded relative">
-        <img src={photo.url} className="h-20 w-20" alt={photo.name} />
+      <div className="flex flex-col items-center m-2 border rounded relative">
+        <img src={photo.url} className="h-20 w-20 rounded" alt={photo.name} />
         {!deletePhotoMutationResults.isLoading && (
           <div
             className="absolute inset-0 flex items-center justify-center text-gray-600 cursor-pointer hover:bg-gray-200 opacity-0 hover:opacity-80"
@@ -33,7 +33,6 @@ const PhotosListItem = ({ photo }: { photo: Photo }) => {
             <GoSync className="text-3xl animate-spin" />
           </div>
         )}
-        {/* <div className="p-2 cursor-pointer">{photo.name}</div> */}
         <div
           className="cursor-pointer"
           onClick={(e) => {
@@ -42,10 +41,7 @@ const PhotosListItem = ({ photo }: { photo: Photo }) => {
               deletePhoto(photo.id);
             }
           }}
-        >
-          {/* {!deletePhotoMutationResults.isLoading && <GoTrashcan />} */}
-          {/* {deletePhotoMutationResults.isLoading && <GoSync className="animate-spin" />} */}
-        </div>
+        ></div>
       </div>
     </li>
   );

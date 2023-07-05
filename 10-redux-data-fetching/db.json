@@ -1,10 +1,6 @@
 {
   "users": [
     {
-      "name": "Robyn Rau-Murazik",
-      "id": 28
-    },
-    {
       "name": "Eva Friesen",
       "id": 29
     },
@@ -15,53 +11,17 @@
     {
       "name": "Audrey Jacobson",
       "id": 31
+    },
+    {
+      "name": "Josefina Wintheiser DVM",
+      "id": 32
     }
   ],
   "albums": [
     {
-      "name": "Refined Cotton Table",
-      "userId": 28,
-      "id": 3
-    },
-    {
-      "name": "Licensed Fresh Hat",
-      "userId": 28,
-      "id": 4
-    },
-    {
-      "name": "Practical Wooden Towels",
-      "userId": 28,
-      "id": 6
-    },
-    {
-      "name": "Electronic Frozen Chips",
-      "userId": 28,
-      "id": 8
-    },
-    {
-      "name": "Elegant Steel Salad",
-      "userId": 28,
-      "id": 10
-    },
-    {
-      "name": "Unbranded Soft Car",
-      "userId": 28,
-      "id": 11
-    },
-    {
-      "name": "Generic Granite Shoes",
-      "userId": 28,
-      "id": 13
-    },
-    {
       "name": "Handmade Metal Table",
       "userId": 31,
       "id": 15
-    },
-    {
-      "name": "Small Rubber Computer",
-      "userId": 31,
-      "id": 18
     },
     {
       "name": "Luxurious Plastic Chips",
@@ -89,14 +49,14 @@
       "id": 25
     },
     {
-      "name": "Awesome Steel Fish",
-      "userId": 28,
-      "id": 26
-    },
-    {
       "name": "Bespoke Soft Shirt",
       "userId": 31,
       "id": 27
+    },
+    {
+      "name": "Oriental Granite Pants",
+      "userId": 32,
+      "id": 28
     }
   ],
   "photos": [
@@ -161,12 +121,6 @@
       "id": 16
     },
     {
-      "name": "Handcrafted Wooden Pizza",
-      "url": "https://picsum.photos/seed/czPS8/150/150",
-      "albumId": 4,
-      "id": 18
-    },
-    {
       "name": "Oriental Steel Chicken",
       "url": "https://picsum.photos/seed/rfgty/150/150",
       "albumId": 15,
@@ -177,6 +131,36 @@
       "url": "https://picsum.photos/seed/GN4i6Shb3/150/150",
       "albumId": 15,
       "id": 21
+    },
+    {
+      "name": "Incredible Bronze Chair",
+      "url": "https://picsum.photos/seed/1309n/150/150",
+      "albumId": 28,
+      "id": 22
+    },
+    {
+      "name": "Modern Rubber Keyboard",
+      "url": "https://picsum.photos/seed/WaxXPQn/150/150",
+      "albumId": 28,
+      "id": 23
+    },
+    {
+      "name": "Generic Cotton Fish",
+      "url": "https://picsum.photos/seed/K55q0Mof8e/150/150",
+      "albumId": 28,
+      "id": 24
+    },
+    {
+      "name": "Handcrafted Rubber Hat",
+      "url": "https://picsum.photos/seed/FixgLDw/150/150",
+      "albumId": 23,
+      "id": 25
+    },
+    {
+      "name": "Tasty Frozen Chips",
+      "url": "https://picsum.photos/seed/JZU9uUny/150/150",
+      "albumId": 23,
+      "id": 26
     }
   ]
 }
