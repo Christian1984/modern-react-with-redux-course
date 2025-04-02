@@ -8,7 +8,12 @@ export const useWebsocket = <T>(url: string, callback: (data: T) => void) => {
     const ws = new WebSocket(url);
 
     ws.addEventListener("message", (e) => {
-      cb(e.data as T);
+      try {
+        const data = JSON.parse(e.data) as T;
+        cb(data);
+      } catch (e) {
+        console.error(e);
+      }
     });
 
     wsRef.current = ws;
