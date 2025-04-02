@@ -1,0 +1,28 @@
+asyncapi: "2.0.0"
+info:
+  title: WebSocket API
+  version: "1.0.0"
+  description: WebSocket server documentation.
+
+servers:
+  wsServer:
+    url: ws://localhost:3000
+    protocol: ws
+    description: WebSocket Server
+
+channels:
+  /api/ws:
+    description: Main WebSocket channel
+    subscribe:
+      summary: Client listens for messages
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            event:
+              type: string
+              example: "message"
+            data:
+              type: string
+              example: "invalidate counter"
