@@ -24,5 +24,8 @@ channels:
               type: string
               example: "message"
             data:
-              type: string
-              example: "invalidate counter"
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: "invalidate counter"

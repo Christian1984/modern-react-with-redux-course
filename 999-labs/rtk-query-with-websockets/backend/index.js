@@ -16,7 +16,7 @@ setInterval(() => {
   }
 
   wsList.map((ws) => {
-    ws.send("invalidate counter");
+    ws.send(JSON.stringify({ message: "invalidate counter" }));
   });
 }, 1000);
 

@@ -5,29 +5,26 @@ import "./App.css";
 import { useGetApiCounterQuery } from "./store/apis/generated/generatedApi";
 import { useDispatch } from "react-redux";
 import { taggedApi } from "./store/apis/tagged/taggedApi";
+import { useWebsocket } from "./hooks/useWebsocket";
+
+type WebhookPayload = {
+  message: string;
+};
 
 function App() {
   const dispatch = useDispatch();
 
+  useWebsocket("/api/ws", (data: WebhookPayload) => {
+    switch (data.message) {
+      case "invalidate counter":
+        dispatch(taggedApi.util.invalidateTags(["Counter"]));
+        break;
+      default:
+        console.warn("unknown webhook message");
+    }
+  });
+
   const { data } = useGetApiCounterQuery();
-
-  const wsRef = useRef<WebSocket>(null);
-
-  const connectWs = () => {
-    const ws = new WebSocket("/api/ws");
-
-    ws.addEventListener("message", (e) => {
-      console.log("received message", e);
-      dispatch(taggedApi.util.invalidateTags(["Counter"]));
-    });
-
-    wsRef.current = ws;
-  };
-
-  useEffect(() => {
-    connectWs();
-    return () => wsRef.current?.close();
-  }, []);
 
   return (
     <>
